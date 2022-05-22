@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UnidadMedida;
+use App\Models\Conversion;
 
 class ConversionController extends Controller
 {
@@ -56,7 +58,7 @@ class ConversionController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("conversion.editar");
     }
 
     /**

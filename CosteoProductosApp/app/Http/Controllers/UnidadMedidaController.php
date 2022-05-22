@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UnidadMedida;
 
 class UnidadMedidaController extends Controller
 {
@@ -13,7 +14,9 @@ class UnidadMedidaController extends Controller
      */
     public function index()
     {
-        return view("unidadmedida.ver");
+        $editable = true;
+        $unidadmedida = UnidadMedida::All();
+        return view('unidadmedida.ver', compact("unidadmedida", "editable"));
     }
 
     /**
@@ -23,7 +26,9 @@ class UnidadMedidaController extends Controller
      */
     public function create()
     {
-        return view("unidadmedida.crear");
+        $editable = false;
+        $unidadmedida = UnidadMedida::All();
+        return view("unidadmedida.crear", compact("unidadmedida", "editable"));
     }
 
     /**
@@ -34,7 +39,15 @@ class UnidadMedidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $editable = false;
+        $unidadmedida = new UnidadMedida();
+        $unidadmedida->nombre = $request->nombre;
+        $unidadmedida->magnitud = $request->magnitud;
+        $unidadmedida->simbolo = $request->simbolo;
+        $unidadmedida->save();
+        //redirigir la vista al ingreso de los factores de conversion
+        //return redirect()->route('crear_conversion');
+        return redirect()->route('crear_unidad_medida');
     }
 
     /**
@@ -56,7 +69,8 @@ class UnidadMedidaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $unidadmedida = UnidadMedida::find($id);
+        return view('unidadmedida.editar', compact("unidadmedida"));
     }
 
     /**
@@ -68,7 +82,12 @@ class UnidadMedidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $unidadmedida = UnidadMedida::find($id);
+        $unidadmedida->nombre = $request->nombre;
+        $unidadmedida->magnitud = $request->magnitud;
+        $unidadmedida->simbolo = $request->simbolo;
+        $unidadmedida->save();
+        return redirect()->route('ver_unidad_medida');
     }
 
     /**
@@ -79,6 +98,9 @@ class UnidadMedidaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $editable = true;
+        $unidadmedida = UnidadMedida::find($id);
+        $unidadmedida->delete();
+        return redirect()->route('ver_unidad_medida', "editable");
     }
 }

@@ -3,9 +3,14 @@
 @section("contenido")
 
 <div>
-    <p>
-        <h4><br>Ver unidades de medida</h4>
-    </p>
+    @include("layout.tablaunidadmedida")
+</div>
+<div class="form-group row">
+    <form action="{{Route('crear_unidad_medida')}}">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Agregar Unidad de Medida</button>
+        </div>
+    </form>
 </div>
 
 @endsection

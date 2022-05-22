@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('conversion', function (Blueprint $table) {
-            $table->foreignId('unidad_medida_original')->constrained('unidad_medida')
+            $table->foreignId('unidad_medida_inicial')->constrained('unidad_medida')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('unidad_medida_convertida')->constrained('unidad_medida')
+            $table->foreignId('unidad_medida_final')->constrained('unidad_medida')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->float('factor_conversion', 8, 2);
             $table->timestamps();
