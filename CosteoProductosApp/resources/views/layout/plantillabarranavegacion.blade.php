@@ -35,7 +35,8 @@
                         <li><a class="dropdown-item" href="#">Productos</a></li>
                         <li><a class="dropdown-item" href="#">Materia prima</a></li>
                         <li><a class="dropdown-item" href="#">Recetas</a></li>
-                        <li><a class="dropdown-item" href="#">Unidad de medida</a></li>
+                        <li><a class="dropdown-item" href="{{Route('ver_unidad_medida')}}">Unidad de medida</a></li>
+                        <li><a class="dropdown-item" href="{{Route('ver_conversion')}}">Factor de conversion</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

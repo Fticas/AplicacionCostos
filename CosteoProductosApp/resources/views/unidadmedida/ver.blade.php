@@ -4,7 +4,7 @@
 
 <div>
     <p>
-        <h4><br>Mensaje de bienvenida</h4>
+        <h4><br>Ver unidades de medida</h4>
     </p>
 </div>
 
