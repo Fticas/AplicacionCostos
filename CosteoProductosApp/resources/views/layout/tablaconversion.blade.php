@@ -1,5 +1,5 @@
 <p>
-    <h4>Unidades de Medida</h4>
+    <h4>Conversiones de Medida</h4>
 </p>
 <table class="table">
     <thead>
@@ -12,16 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        @if(count($conversionmedida))
-        @foreach($conversionmedida as $conversion)
+        @if(count($conversion))
+        @foreach($conversion as $conv)
         <tr>
-            <td>{{$conversion->unidad_medida_inicial}}</td>
-            <td>{{$conversion->unidad_medida_final}}</td>
-            <td>{{$conversion->factor_conversion}}</td>
-            @if($editable)
-            <td><a href="{{Route('editar_conversion', $conversion)}}">editar</a></td>
-            <td><a href="{{Route('eliminar_conversion', $conversion)}}">eliminar</a></td>
-            @endif
+            <td>{{getNombreUnidadMedida($unidadmedida, $conv->unidad_medida_inicial)}}</td>
+            <td>{{getNombreUnidadMedida($unidadmedida, $conv->unidad_medida_final)}}</td>
+            <td>{{$conv->factor_conversion}}</td>
+            <td><a href="{{route('editar_conversion', $conv)}}">editar</a></td>
         </tr>
         @endforeach
         @else

@@ -15,7 +15,9 @@ class ConversionController extends Controller
      */
     public function index()
     {
-        return view("conversion.ver");
+        $conversion = Conversion::All();
+        $unidadmedida = UnidadMedida::All();
+        return view("conversion.ver", compact("conversion", "unidadmedida"));
     }
 
     /**
@@ -25,7 +27,18 @@ class ConversionController extends Controller
      */
     public function create()
     {
-        return view("conversion.crear");
+        $unidadmedida = UnidadMedida::All();
+        $tamanio = sizeof($unidadmedida);
+        if($tamanio != 1)
+        {
+            $ultimo = $unidadmedida[$tamanio-1];
+            for($i=0; $i<=$tamanio-2; $i++)
+            {
+                app(ConversionController::class)->store($unidadmedida[$i], $ultimo);
+                app(ConversionController::class)->store($ultimo, $unidadmedida[$i]);
+            }
+        }
+        return redirect()->route('crear_unidad_medida');
     }
 
     /**
@@ -34,9 +47,13 @@ class ConversionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnidadMedida $um1, UnidadMedida $um2)
     {
-        //
+        $conversion = new Conversion();
+        $conversion->unidad_medida_inicial = $um1->id;
+        $conversion->unidad_medida_final = $um2->id;
+        $conversion->factor_conversion = 1.00;
+        $conversion->save();
     }
 
     /**
@@ -53,12 +70,14 @@ class ConversionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Conversion  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view("conversion.editar");
+        $conversion = Conversion::find($id);
+        $unidadmedida = UnidadMedida::All();
+        return view("conversion.editar", compact("conversion", "unidadmedida"));
     }
 
     /**
@@ -70,7 +89,10 @@ class ConversionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $conversion = Conversion::find($id);
+        $conversion->factor_conversion = $request->factor;
+        $conversion->update();
+        return redirect()->route("ver_conversion");
     }
 
     /**

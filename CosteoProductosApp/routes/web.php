@@ -31,8 +31,8 @@ Route::controller(UnidadMedidaController::class)->group(function(){
 Route::controller(ConversionController::class)->group(function(){
     Route::get('/conversion/ver', 'index')->name('ver_conversion');
     Route::get('/conversion/crear', 'create')->name('crear_conversion');
-    Route::post('/conversion/guardar', 'store')->name('guardar_conversion');
+    Route::get('/conversion/guardar', 'store')->name('guardar_conversion');
     Route::get('/conversion/{id}/editar', 'edit')->name('editar_conversion');
     Route::put('/conversion/{id}/actulizar', 'update')->name('actualizar_conversion');
-    Route::get('/conversion/{id}/eliminar', 'destroy')->name('eliminar_conversion');
 });
+

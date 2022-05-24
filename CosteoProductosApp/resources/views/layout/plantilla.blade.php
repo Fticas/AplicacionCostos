@@ -17,7 +17,7 @@
             background-color: white;
             height: 559px;
             overflow: hidden;
-            /*overflow-y: scroll;*/
+            overflow-y: scroll;
             margin-left: 1%;
             margin-right: 1%;
         }

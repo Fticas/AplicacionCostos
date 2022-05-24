@@ -21,8 +21,8 @@
             <td>{{$um->magnitud}}</td>
             <td>{{$um->simbolo}}</td>
             @if($editable)
-            <td><a href="{{Route('editar_unidad_medida', $um)}}">editar</a></td>
-            <td><a href="{{Route('eliminar_unidad_medida', $um)}}">eliminar</a></td>
+            <td><a href="{{route('editar_unidad_medida', $um)}}">editar</a></td>
+            <td><a href="{{route('eliminar_unidad_medida', $um)}}">eliminar</a></td>
             @endif
         </tr>
         @endforeach

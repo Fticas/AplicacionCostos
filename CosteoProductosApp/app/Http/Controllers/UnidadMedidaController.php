@@ -45,9 +45,7 @@ class UnidadMedidaController extends Controller
         $unidadmedida->magnitud = $request->magnitud;
         $unidadmedida->simbolo = $request->simbolo;
         $unidadmedida->save();
-        //redirigir la vista al ingreso de los factores de conversion
-        //return redirect()->route('crear_conversion');
-        return redirect()->route('crear_unidad_medida');
+        return redirect()->route('crear_conversion');
     }
 
     /**
@@ -98,9 +96,8 @@ class UnidadMedidaController extends Controller
      */
     public function destroy($id)
     {
-        $editable = true;
         $unidadmedida = UnidadMedida::find($id);
         $unidadmedida->delete();
-        return redirect()->route('ver_unidad_medida', "editable");
+        return redirect()->route('ver_unidad_medida');
     }
 }
