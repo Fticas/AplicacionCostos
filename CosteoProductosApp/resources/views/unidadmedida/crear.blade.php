@@ -19,9 +19,17 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Magnitud:</label>
+            <label for="inputSelect" class="col-sm-2 col-form-label">Magnitud:</label>
             <div class="col-sm-10">
-                <input type="text"  name="magnitud" size="15" placeholder="Ingrese su magnitud  ">
+                @if(count($magnitud))
+                    <select name="magnitud" aria-label="Default select example" column="70">
+                        @foreach($magnitud as $mag)
+                            <option>{{$mag->nombre}}</option>
+                        @endforeach
+                    </select>
+                @else
+                    <select name="magnitud" aria-label="Default select example" column="70"></select>
+                @endif
             </div>
         </div>
         <div class="form-group row">

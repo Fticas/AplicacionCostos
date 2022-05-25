@@ -19,6 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(MagnitudController::class)->group(function(){
+    Route::get('/magnitud/ver', 'index')->name('ver_magnitud');
+    Route::get('/magnitud/crear', 'create')->name('crear_magnitud');
+    Route::post('/magnitud/guardar', 'store')->name('guardar_magnitud');
+    Route::get('/magnitud/{id}/editar', 'edit')->name('editar_magnitud');
+    Route::put('/magnitud/{id}/actualizar', 'update')->name('actualizar_magnitud');
+    Route::get('/magnitud/{id}/eliminar', 'destroy')->name('eliminar_magnitud');
+});
+
 Route::controller(UnidadMedidaController::class)->group(function(){
     Route::get('/unidadmedida/ver', 'index')->name('ver_unidad_medida');
     Route::get('/unidadmedida/crear', 'create')->name('crear_unidad_medida');

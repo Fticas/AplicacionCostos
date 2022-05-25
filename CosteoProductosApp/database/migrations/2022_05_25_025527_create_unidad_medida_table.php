@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('unidad_medida', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 30);
-            $table->string('magnitud', 30);
+            $table->foreignId('magnitud_id')->constrained('magnitud')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->string('simbolo', 10);
             $table->timestamps();
         });

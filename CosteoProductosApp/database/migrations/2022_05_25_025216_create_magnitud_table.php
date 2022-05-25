@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('conversion', function (Blueprint $table) {
+        Schema::create('magnitud', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('unidad_medida_inicial')->constrained('unidad_medida')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('unidad_medida_final')->constrained('unidad_medida')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->float('factor_conversion', 8, 2);
+            $table->string('nombre', 30);
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conversion');
+        Schema::dropIfExists('magnitud');
     }
 };

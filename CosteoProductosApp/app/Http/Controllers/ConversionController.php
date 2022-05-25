@@ -34,8 +34,10 @@ class ConversionController extends Controller
             $ultimo = $unidadmedida[$tamanio-1];
             for($i=0; $i<=$tamanio-2; $i++)
             {
-                app(ConversionController::class)->store($unidadmedida[$i], $ultimo);
-                app(ConversionController::class)->store($ultimo, $unidadmedida[$i]);
+                if($unidadmedida[$i]->magnitud_id == $ultimo->magnitud_id){
+                    app(ConversionController::class)->store($unidadmedida[$i], $ultimo);
+                    app(ConversionController::class)->store($ultimo, $unidadmedida[$i]);
+                }
             }
         }
         return redirect()->route('crear_unidad_medida');

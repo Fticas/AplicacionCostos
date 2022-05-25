@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UnidadMedida;
 use App\Models\Magnitud;
 
-class UnidadMedidaController extends Controller
+class MagnitudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,8 @@ class UnidadMedidaController extends Controller
     public function index()
     {
         $editable = true;
-        $unidadmedida = UnidadMedida::All();
         $magnitud = Magnitud::All();
-        return view('unidadmedida.ver', compact("unidadmedida", "magnitud", "editable"));
+        return view("magnitud.ver", compact("magnitud", "editable"));
     }
 
     /**
@@ -29,9 +27,8 @@ class UnidadMedidaController extends Controller
     public function create()
     {
         $editable = false;
-        $unidadmedida = UnidadMedida::All();
         $magnitud = Magnitud::All();
-        return view("unidadmedida.crear", compact("unidadmedida", "magnitud", "editable"));
+        return view("magnitud.crear", compact("magnitud", "editable"));
     }
 
     /**
@@ -42,13 +39,10 @@ class UnidadMedidaController extends Controller
      */
     public function store(Request $request)
     {
-        $unidadmedida = new UnidadMedida();
-        $magnitud = Magnitud::where("nombre", $request->magnitud)->first();
-        $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->magnitud_id = $magnitud->id;
-        $unidadmedida->simbolo = $request->simbolo;
-        $unidadmedida->save();
-        return redirect()->route('crear_conversion');
+        $magnitud = new Magnitud();
+        $magnitud->nombre = $request->nombre;
+        $magnitud->save();
+        return redirect()->route('crear_magnitud');
     }
 
     /**
@@ -70,9 +64,8 @@ class UnidadMedidaController extends Controller
      */
     public function edit($id)
     {
-        $unidadmedida = UnidadMedida::find($id);
-        $magnitud = Magnitud::All();
-        return view('unidadmedida.editar', compact("unidadmedida", "magnitud"));
+        $magnitud = Magnitud::find($id);
+        return view('magnitud.editar', compact("magnitud"));
     }
 
     /**
@@ -84,13 +77,10 @@ class UnidadMedidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $unidadmedida = UnidadMedida::find($id);
-        $magnitud = Magnitud::where("nombre", $request->magnitud)->first();
-        $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->magnitud_id = $magnitud->id;
-        $unidadmedida->simbolo = $request->simbolo;
-        $unidadmedida->update();
-        return redirect()->route('ver_unidad_medida');
+        $magnitud = Magnitud::find($id);
+        $magnitud->nombre = $request->nombre;
+        $magnitud->update();
+        return redirect()->route('ver_magnitud');
     }
 
     /**
@@ -101,8 +91,8 @@ class UnidadMedidaController extends Controller
      */
     public function destroy($id)
     {
-        $unidadmedida = UnidadMedida::find($id);
-        $unidadmedida->delete();
-        return redirect()->route('ver_unidad_medida');
+        $magnitud = Magnitud::find($id);
+        $magnitud->delete();
+        return redirect()->route('ver_magnitud');
     }
 }

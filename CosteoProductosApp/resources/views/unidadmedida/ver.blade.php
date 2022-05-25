@@ -11,6 +11,7 @@
             <button type="submit" class="btn btn-primary">Agregar Unidad de Medida</button>
         </div>
     </form>
+    <a href="{{route('ver_magnitud')}}">Ver Magnitud</a>
 </div>
 
 @endsection
