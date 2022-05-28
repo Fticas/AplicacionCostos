@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('conversion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('unidad_medida_inicial')->constrained('unidad_medida')
+            $table->foreignId('id_unidad_medida_inicial')->constrained('unidad_medida')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('unidad_medida_final')->constrained('unidad_medida')
+            $table->foreignId('id_unidad_medida_final')->constrained('unidad_medida')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->float('factor_conversion', 8, 6);
+            $table->float('factor_conversion', 22, 10);
             $table->timestamps();
         });
     }

@@ -1,5 +1,3 @@
-<?php include("funciones.php"); ?>
-
 <p>
     <h4>Unidades de Medida</h4>
 </p>
@@ -20,7 +18,7 @@
         <tr>
             <td>{{$um->id}}</td>
             <td>{{$um->nombre}}</td>
-            <td>{{getNombreMagnitud($magnitud, $um->magnitud_id)}}</td>
+            <td>{{getNombreMagnitud($um->id_magnitud)}}</td>
             <td>{{$um->simbolo}}</td>
             @if($editable)
             <td><a href="{{route('editar_unidad_medida', $um)}}">editar</a></td>

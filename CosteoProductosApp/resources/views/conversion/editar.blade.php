@@ -1,7 +1,5 @@
 @extends("layout.plantilla")
 
-<?php include("funciones.php"); ?>
-
 @section("contenido")
 
 <div>
@@ -18,13 +16,13 @@
         <div class="form-group row">
             <label for="inputText" class="col-sm-2 col-form-label">Unidad de medida inicial:</label>
             <div class="col-sm-10">
-                <input readonly type="text"  name="uminicial" size="15" value="{{getNombreUnidadMedida($unidadmedida, $conversion->unidad_medida_inicial)}}">
+                <input readonly type="text"  name="uminicial" size="15" value="{{getNombreUnidadMedida($conversion->id_unidad_medida_inicial)}}">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputText" class="col-sm-2 col-form-label">Unidad de medida final:</label>
             <div class="col-sm-10">
-                <input readonly type="text" type="text"  name="umfinal" size="20" value="{{getNombreUnidadMedida($unidadmedida, $conversion->unidad_medida_final)}}">
+                <input readonly type="text" type="text"  name="umfinal" size="20" value="{{getNombreUnidadMedida($conversion->id_unidad_medida_final)}}">
             </div>
         </div>
         <div class="form-group row">

@@ -3,7 +3,9 @@
 @section("contenido")
 
 <div>
-    @include("layout.tablaconversion")
+    <p>
+        <h4><br>Mostrar producto</h4>
+    </p>
 </div>
 
 @endsection

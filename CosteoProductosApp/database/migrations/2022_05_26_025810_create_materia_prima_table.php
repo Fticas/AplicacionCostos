@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unidad_medida', function (Blueprint $table) {
+        Schema::create('materia_prima', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 30);
-            $table->foreignId('id_magnitud')->constrained('magnitud')
+            $table->string('unidades_existencia', 30);
+            $table->foreignId('id_unidad_medida_base')->constrained('unidad_medida')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->string('simbolo', 10);
+            $table->double('precio_unitario', 22, 10);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unidad_medida');
+        Schema::dropIfExists('materia_prima');
     }
 };

@@ -32,11 +32,11 @@
                     Insumos y Mercancias
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Productos</a></li>
-                        <li><a class="dropdown-item" href="#">Materia prima</a></li>
+                        <li><a class="dropdown-item" href="{{route('ver_producto')}}">Productos</a></li>
+                        <li><a class="dropdown-item" href="{{route('ver_materia_prima')}}">Materia prima</a></li>
                         <li><a class="dropdown-item" href="#">Recetas</a></li>
-                        <li><a class="dropdown-item" href="{{Route('ver_unidad_medida')}}">Unidad de medida</a></li>
-                        <li><a class="dropdown-item" href="{{Route('ver_conversion')}}">Factor de conversion</a></li>
+                        <li><a class="dropdown-item" href="{{route('ver_unidad_medida')}}">Unidad de medida</a></li>
+                        <li><a class="dropdown-item" href="{{route('ver_conversion')}}">Factor de conversion</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

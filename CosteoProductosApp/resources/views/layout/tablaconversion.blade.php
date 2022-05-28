@@ -15,8 +15,8 @@
         @if(count($conversion))
         @foreach($conversion as $conv)
         <tr>
-            <td>{{getNombreUnidadMedida($unidadmedida, $conv->unidad_medida_inicial)}}</td>
-            <td>{{getNombreUnidadMedida($unidadmedida, $conv->unidad_medida_final)}}</td>
+            <td>{{getNombreUnidadMedida($conv->id_unidad_medida_inicial)}}</td>
+            <td>{{getNombreUnidadMedida($conv->id_unidad_medida_final)}}</td>
             <td>{{$conv->factor_conversion}}</td>
             <td><a href="{{route('editar_conversion', $conv)}}">editar</a></td>
         </tr>

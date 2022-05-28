@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-include("funciones.php");
-
 use Illuminate\Http\Request;
-use App\Models\UnidadMedida;
-use App\Models\Conversion;
 
-class ConversionController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +13,7 @@ class ConversionController extends Controller
      */
     public function index()
     {
-        $conversion = Conversion::All();
-        return view("conversion.ver", compact("conversion"));
+        return view('producto.ver');
     }
 
     /**
@@ -28,14 +23,7 @@ class ConversionController extends Controller
      */
     public function create()
     {
-        $unidadmedida = UnidadMedida::All();
-        $tamanio = sizeof($unidadmedida);
-        if($tamanio > 1)
-        {
-            $um_referencia = $unidadmedida[$tamanio-1];
-            crearFactoresConversion($um_referencia);
-        }
-        return redirect()->route('crear_unidad_medida');
+        return view('producto.create');
     }
 
     /**
@@ -63,13 +51,12 @@ class ConversionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Conversion  $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $conversion = Conversion::find($id);
-        return view("conversion.editar", compact("conversion"));
+        //
     }
 
     /**
@@ -81,10 +68,7 @@ class ConversionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $conversion = Conversion::find($id);
-        $conversion->factor_conversion = $request->factor;
-        $conversion->update();
-        return redirect()->route("ver_conversion");
+        //
     }
 
     /**

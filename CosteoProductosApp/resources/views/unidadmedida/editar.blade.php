@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label for="inputText" class="col-sm-2 col-form-label">C&oacutedigo:</label>
             <div class="col-sm-10">
-                <input readonly type="text"  name="codigo" size="15" value="{{$unidadmedida->id}}">
+                <input readonly type="text" name="codigo" size="15" value="{{$unidadmedida->id}}">
             </div>
         </div>
         <div class="form-group row">
@@ -29,13 +29,17 @@
             <label for="inputSelect" class="col-sm-2 col-form-label">Magnitud:</label>
             <div class="col-sm-10">
                 @if(count($magnitud))
-                    <select name="magnitud" aria-label="Default select example" column="70">
+                    <select name="nombre_magnitud" aria-label="Default select example" column="70">
                         @foreach($magnitud as $mag)
+                            @if($mag->id == $unidadmedida->id_magnitud)
+                            <option selected>{{$mag->nombre}}</option>
+                            @else
                             <option>{{$mag->nombre}}</option>
+                            @endif
                         @endforeach
                     </select>
                 @else
-                    <select name="magnitud" aria-label="Default select example" column="70"></select>
+                    <select name="nombre_magnitud" aria-label="Default select example" column="70"></select>
                 @endif
             </div>
         </div>

@@ -45,3 +45,20 @@ Route::controller(ConversionController::class)->group(function(){
     Route::put('/conversion/{id}/actulizar', 'update')->name('actualizar_conversion');
 });
 
+Route::controller(MateriaPrimaController::class)->group(function(){
+    Route::get('/materiaprima/ver', 'index')->name('ver_materia_prima');
+    Route::get('/materiaprima/crear', 'create')->name('crear_materia_prima');
+    Route::post('/materiaprima/guardar', 'store')->name('guardar_materia_prima');
+    Route::get('/materiaprima/{id}/editar', 'edit')->name('editar_materia_prima');
+    Route::put('/materiaprima/{id}/actualizar', 'update')->name('actualizar_materia_prima');
+    Route::get('/materiaprima/{id}/eliminar', 'destroy')->name('eliminar_materia_prima');
+});
+
+Route::controller(ProductoController::class)->group(function(){
+    Route::get('/producto/ver', 'index')->name('ver_producto');
+    Route::get('/producto/crear', 'create')->name('crear_producto');
+    Route::post('/producto/guardar', 'store')->name('guardar_producto');
+    Route::get('/producto/{id}/editar', 'edit')->name('editar_producto');
+    Route::put('/producto/{id}/actualizar', 'update')->name('actualizar_producto');
+    Route::get('/producto/{id}/eliminar', 'destroy')->name('eliminar_producto');
+});

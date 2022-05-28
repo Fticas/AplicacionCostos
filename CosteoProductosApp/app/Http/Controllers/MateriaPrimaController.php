@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 include("funciones.php");
 
 use Illuminate\Http\Request;
+use App\Models\MateriaPrima;
 use App\Models\UnidadMedida;
-use App\Models\Conversion;
 
-class ConversionController extends Controller
+class MateriaPrimaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,9 @@ class ConversionController extends Controller
      */
     public function index()
     {
-        $conversion = Conversion::All();
-        return view("conversion.ver", compact("conversion"));
+        $editable = true;
+        $materiaprima = MateriaPrima::All();
+        return view('materiaprima.ver', compact("editable", "materiaprima"));
     }
 
     /**
@@ -28,14 +29,10 @@ class ConversionController extends Controller
      */
     public function create()
     {
+        $editable = false;
+        $materiaprima = MateriaPrima::All();
         $unidadmedida = UnidadMedida::All();
-        $tamanio = sizeof($unidadmedida);
-        if($tamanio > 1)
-        {
-            $um_referencia = $unidadmedida[$tamanio-1];
-            crearFactoresConversion($um_referencia);
-        }
-        return redirect()->route('crear_unidad_medida');
+        return view('materiaprima.crear', compact("editable", "materiaprima", "unidadmedida"));
     }
 
     /**
@@ -46,7 +43,14 @@ class ConversionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $materiaprima = new MateriaPrima();
+        $unidadmedida = UnidadMedida::where("nombre", $request->nombre_unidadmedida)->first();
+        $materiaprima->nombre = $request->nombre;
+        $materiaprima->unidades_existencia = 0;
+        $materiaprima->id_unidad_medida_base = $unidadmedida->id;
+        $materiaprima->precio_unitario = 0.00;
+        $materiaprima->save();
+        return redirect()->route('crear_materia_prima');
     }
 
     /**
@@ -63,13 +67,14 @@ class ConversionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Conversion  $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $conversion = Conversion::find($id);
-        return view("conversion.editar", compact("conversion"));
+        $materiaprima = MateriaPrima::find($id);
+        $unidadmedida = UnidadMedida::All();
+        return view("materiaprima.editar", compact("materiaprima", "unidadmedida"));
     }
 
     /**
@@ -81,10 +86,7 @@ class ConversionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $conversion = Conversion::find($id);
-        $conversion->factor_conversion = $request->factor;
-        $conversion->update();
-        return redirect()->route("ver_conversion");
+        return $request;
     }
 
     /**

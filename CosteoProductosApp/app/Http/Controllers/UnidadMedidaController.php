@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+include("funciones.php");
+
 use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
 use App\Models\Magnitud;
+use App\Http\Controllers\ConversionController;
 
 class UnidadMedidaController extends Controller
 {
@@ -17,8 +20,7 @@ class UnidadMedidaController extends Controller
     {
         $editable = true;
         $unidadmedida = UnidadMedida::All();
-        $magnitud = Magnitud::All();
-        return view('unidadmedida.ver', compact("unidadmedida", "magnitud", "editable"));
+        return view('unidadmedida.ver', compact("editable", "unidadmedida"));
     }
 
     /**
@@ -31,7 +33,7 @@ class UnidadMedidaController extends Controller
         $editable = false;
         $unidadmedida = UnidadMedida::All();
         $magnitud = Magnitud::All();
-        return view("unidadmedida.crear", compact("unidadmedida", "magnitud", "editable"));
+        return view("unidadmedida.crear", compact("editable", "unidadmedida", "magnitud"));
     }
 
     /**
@@ -43,9 +45,9 @@ class UnidadMedidaController extends Controller
     public function store(Request $request)
     {
         $unidadmedida = new UnidadMedida();
-        $magnitud = Magnitud::where("nombre", $request->magnitud)->first();
+        $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
         $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->magnitud_id = $magnitud->id;
+        $unidadmedida->id_magnitud = $magnitud->id;
         $unidadmedida->simbolo = $request->simbolo;
         $unidadmedida->save();
         return redirect()->route('crear_conversion');
@@ -85,11 +87,16 @@ class UnidadMedidaController extends Controller
     public function update(Request $request, $id)
     {
         $unidadmedida = UnidadMedida::find($id);
-        $magnitud = Magnitud::where("nombre", $request->magnitud)->first();
+        $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
+        $id_magnitud_anterior = $unidadmedida->id_magnitud;
         $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->magnitud_id = $magnitud->id;
         $unidadmedida->simbolo = $request->simbolo;
+        $unidadmedida->id_magnitud = $magnitud->id;
         $unidadmedida->update();
+        if($id_magnitud_anterior != $magnitud->id){
+            eliminarFactoresConversion($unidadmedida);
+            crearFactoresConversion($unidadmedida);
+        }
         return redirect()->route('ver_unidad_medida');
     }
 
