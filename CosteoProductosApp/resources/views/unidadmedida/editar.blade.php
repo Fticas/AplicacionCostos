@@ -5,7 +5,7 @@
 <div class="row"style="margin:auto;">
         <div class="col-md-12" style="margin:auto;background: transparent;">
             <div class="pull-right"style="background:transparent;">
-                <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Regresar" href="{{Route('ver_producto')}}"style="margin-top: 10px;margin-bottom: 10px;"> 
+                <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Regresar" href="{{Route('ver_unidad_medida')}}"style="margin-top: 10px;margin-bottom: 10px;"> 
                     Regresar
                 </a>
             </div>

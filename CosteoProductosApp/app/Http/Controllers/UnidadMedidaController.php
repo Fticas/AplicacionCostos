@@ -19,7 +19,10 @@ class UnidadMedidaController extends Controller
     public function index()
     {
         $editable = true;
-        $unidadmedida = UnidadMedida::All();
+        //SUSTITUYENDO METODO DE LLAMADA
+        /*$unidadmedida = UnidadMedida::All();*/
+        //SUSTITUYENDO METODO DE LLAMADA
+        $unidadmedida = UnidadMedida::orderby('id','ASC')->paginate(5); //NUEVA LLAMADA
         return view('unidadmedida.ver', compact("editable", "unidadmedida"));
     }
 
@@ -31,7 +34,10 @@ class UnidadMedidaController extends Controller
     public function create()
     {
         $editable = false;
-        $unidadmedida = UnidadMedida::All();
+        //SUSTITUYENDO METODO DE LLAMADA
+        /*$unidadmedida = UnidadMedida::All();*/
+        //SUSTITUYENDO METODO DE LLAMADA
+        $unidadmedida = UnidadMedida::orderby('id','ASC')->paginate(5); //NUEVA LLAMADA
         $magnitud = Magnitud::All();
         return view("unidadmedida.crear", compact("editable", "unidadmedida", "magnitud"));
     }
@@ -44,13 +50,21 @@ class UnidadMedidaController extends Controller
      */
     public function store(Request $request)
     {
+        //AGREGANDO VALIDACION
+         $request->validate([
+            'nombre'=>'required|String', 
+            
+            'simbolo'=> 'required|String']);
+         //AGREGANDO VALIDACION
         $unidadmedida = new UnidadMedida();
         $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
         $unidadmedida->nombre = $request->nombre;
         $unidadmedida->id_magnitud = $magnitud->id;
         $unidadmedida->simbolo = $request->simbolo;
         $unidadmedida->save();
-        return redirect()->route('crear_conversion');
+        //SUSTITUYENDO RETORNO AGREGANDO ALERTA
+        return redirect()->route('crear_conversion')->with('registro_creado', 'Unidad registrada exitosamente');
+        //AGREGANDO ALERTA
     }
 
     /**
@@ -97,7 +111,9 @@ class UnidadMedidaController extends Controller
             eliminarFactoresConversion($unidadmedida);
             crearFactoresConversion($unidadmedida);
         }
-        return redirect()->route('ver_unidad_medida');
+        //AGREGANDO ALERTA
+        return redirect()->route('ver_unidad_medida')->with('registro_actualizado', 'Unidad actualizada exitosamente');
+        //AGREGANDO ALERTA
     }
 
     /**
@@ -110,6 +126,8 @@ class UnidadMedidaController extends Controller
     {
         $unidadmedida = UnidadMedida::find($id);
         $unidadmedida->delete();
-        return redirect()->route('ver_unidad_medida');
+         //AGREGANDO ALERTA
+        return redirect()->route('ver_unidad_medida')->with('registro_borrado', 'Unidad eliminada exitosamente');
+        //AGREGANDO ALERTA
     }
 }

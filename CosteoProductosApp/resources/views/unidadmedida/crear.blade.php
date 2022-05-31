@@ -14,8 +14,8 @@
             <br>
 </div>
 <div id ="formulario_unidad"class="col-md-12">
-    @if (session('registro_creado'))
-        <div id="crear" class="alert alert-success alert-dismissible fade show" role="alert">
+        @if (session('registro_creado'))
+        <div  class="alert alert-success alert-dismissible fade show crear" role="alert">
             {{session('registro_creado')}}
         </div>
         @endif

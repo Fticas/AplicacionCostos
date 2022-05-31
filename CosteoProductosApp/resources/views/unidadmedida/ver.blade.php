@@ -2,13 +2,13 @@
 
 @section("contenido")
 @if (session('registro_borrado'))
-    <div id="borrar" class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show borrar" role="alert">
         {{session('registro_borrado')}}
     </div>
 @endif
 
 @if (session('registro_actualizado'))
-    <div id="actualizar" class="alert alert-success alert-dismissible fade show" role="alert">
+    <div  class="alert alert-success alert-dismissible fade show actualizar" role="alert">
         {{session('registro_actualizado')}}
     </div>
 @endif      

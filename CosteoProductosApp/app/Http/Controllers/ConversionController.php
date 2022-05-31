@@ -35,7 +35,7 @@ class ConversionController extends Controller
             $um_referencia = $unidadmedida[$tamanio-1];
             crearFactoresConversion($um_referencia);
         }
-        return redirect()->route('crear_unidad_medida');
+        return redirect()->route('crear_unidad_medida')->with('registro_creado', 'Unidad registrada exitosamente');
     }
 
     /**

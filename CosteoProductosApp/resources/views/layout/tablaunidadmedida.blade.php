@@ -47,4 +47,4 @@
           @endif
         </tbody>
     </table>
-    
+    {!! $unidadmedida->links() !!}
