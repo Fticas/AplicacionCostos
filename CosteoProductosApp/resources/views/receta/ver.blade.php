@@ -65,8 +65,8 @@
         </div>
     </div>
     <div class="pull-right"style="background:transparent;">
-        <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Regresar" href="{{Route('ver_producto')}}"style="margin-top: 25px;margin-bottom: 10px;"> 
-                    <i class="fa fa-home fa-fw"></i> 
+        <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Regresar" href="{{Route('ver_producto')}}"style="margin-top: 25px;margin-bottom: 10px;"> 
+                    Regresar
         </a>
     </div>      
 </div>

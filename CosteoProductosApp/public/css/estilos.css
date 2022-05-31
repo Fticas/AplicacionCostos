@@ -152,6 +152,13 @@ body{
 	border: 1px solid;
 }
 
+#editar_receta{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
 /*************************************/
 /*PARTE BAJA TABLA*/
 
