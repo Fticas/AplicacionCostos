@@ -74,3 +74,12 @@ Route::controller(RecetaController::class)->group(function(){
     Route::put('/receta/{id}/actualizar', 'update')->name('actualizar_receta');
     Route::get('/receta/{id}/eliminar', 'destroy')->name('eliminar_receta');
 });
+
+Route::controller(OperarioController::class)->group(function(){
+    Route::get('/operario/ver', 'index')->name('ver_operario');
+    Route::get('/operario/crear', 'create')->name('crear_operario');
+    Route::post('/operario/guardar', 'store')->name('guardar_operario');
+    Route::get('/operario/{id}/editar', 'edit')->name('editar_operario');
+    Route::put('/operario/{id}/actualizar', 'update')->name('actualizar_operario');
+    Route::get('/operario/{id}/eliminar', 'destroy')->name('eliminar_operario');
+});
