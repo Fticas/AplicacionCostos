@@ -1,8 +1,7 @@
 *{
-	background: rgba(100, 255,65, 0.35);	/*Color 1 rgba(23, 155, 32, 0.35);*/
-	
+	background: rgba(25, 100,155, 0.25);	/*Color 1 rgba(23, 155, 32, 0.35);*/
 }
-/*HEADER*/
+
 #miheader{
 
 		margin-top: -8px;
@@ -13,7 +12,6 @@
 	  	background-color: transparent	;
 }
 
-/*CONTENEDOR SUPERIOR*/  /*rgba(31, 181, 189, 0.53);*/
 .container-fluid{
 	margin: 0;
 	padding: 0;
@@ -44,6 +42,8 @@
 
 
 
+
+
 /*******************************************************************/
 
 /*CONTENIDO DEL CUERPO DE PAGINA*/
@@ -55,12 +55,12 @@
 	color: black;
 	margin-right: 200px;
 	margin-left: 200px;
-	background: rgba(0,0,0,0.35);
+	background: rgba(255,255,255,1	);
 	box-shadow: 10px -10px 20px 3px;
 }
 .scroll-div{
 			align-self: auto;
-            height: 559px;
+            height: 560px;
             overflow-y: scroll;
             background: transparent;
         }
@@ -74,22 +74,42 @@ body{
 .table{
 	color: black;
 	text-decoration: blink;
-	background: white;   
-	
+	background: white;
+	border: 1px solid;
 }
 
 .form-group{
 	margin: auto;
-	background: white;
+	background: black;
 }
 
-#formulario{
-
+#formulario_unidad{
+	color: black;
+	text-decoration: blink;
+	background: transparent;
+	border: 1px solid;
+}
+#editar_unidad{
 	color: black;
 	text-decoration: blink;
 	background: transparent; 
-
+	border: 1px solid;
 }
+
+#formulario_magnitud{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
+#editar_magnitud{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
 
 /*************************************/
 /*PARTE BAJA TABLA*/
@@ -114,15 +134,26 @@ body{
 	background: #222;
 }
 
+.text-center{
+	background: transparent;
+}
+
 
 /*******************************************************************/
-
+/*BOTONES*/
 
 #boton{
 	float: right;
 	margin: 15px;
 	box-shadow: 1px -1px 10px 1px;
 }
+
+#boton_medida{
+	float: right;
+	margin: 15px;
+	box-shadow: 1px -1px 10px 1px;
+}
+
 /****************************************************/
 
 #crear{
