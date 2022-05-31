@@ -48,6 +48,7 @@
         
     </form>
 </div>
+<br>
 <div>
     @include("layout.tablaproducto")
 </div>

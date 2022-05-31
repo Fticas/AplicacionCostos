@@ -110,6 +110,13 @@ body{
 	border: 1px solid;
 }
 
+#formulario_materia_prima{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
 #editar_magnitud{
 	color: black;
 	text-decoration: blink;
@@ -125,6 +132,20 @@ body{
 }
 
 #editar_producto{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
+#editar_materia_prima{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
+#mostrar_materia_prima{
 	color: black;
 	text-decoration: blink;
 	background: transparent; 

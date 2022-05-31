@@ -2,10 +2,16 @@
 
 @section("contenido")
 
-<div>
-    <p>
-        <h4><br>edicion materia prima</h4>
-    </p>
+<div class="row"style="margin:auto;">
+        <div class="col-md-12" style="margin:auto;background: transparent;">
+            <div class="pull-right"style="background:transparent;">
+                <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Ir a productos" href="{{Route('ver_receta', $receta->id_producto )}}"style="margin-top: 10px;margin-bottom: 10px;"> 
+                    <i class="fa fa-home fa-fw"></i> 
+                </a>
+                <a class="btn btn-success" href="{{Route('ver_receta', $receta->id_producto )}}">Regresar</a>
+            </div>
+            <h4 class="text-center"style="background: transparent;margin-top: 10px;" >Edite los campos que desea modificar</h4>
+        </div>
 </div>
 <div>
     <form action="{{route('actualizar_receta', $receta)}}" method="POST">
@@ -34,7 +40,7 @@
         <div class="form-group row">
             <label for="inputText" class="col-sm-2 col-form-label">Cantidad:</label>
             <div class="col-sm-10">
-                <input type="text"  name="cantidad" size="20" value="{{$receta->cantidad}}">
+                <input type="text"  name="cantidad" size="20" value="{{$receta->cantidad}}" style="background:white">
             </div>
         </div>
         <div class="form-group row">
@@ -56,15 +62,12 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-sm-10"> <br>
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-            </div>
-            <div>
-                <a href="{{Route('ver_receta', $receta->id_producto )}}">regresar</a>
+            <div class="col-sm-12"> <br>
+                <button type="submit" class="btn btn-primary" style ="margin: 15px;box-shadow: 1px -1px 10px 1px; float:right">Actualizar</button>
             </div>
         </div>
     </form>
-    <br>
+   
 </div>
 
 @endsection

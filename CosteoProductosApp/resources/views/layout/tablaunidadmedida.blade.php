@@ -4,11 +4,11 @@
 <table class="table" >
     <thead>
         <tr>
-            <th class ="text-center"scope="col">Acciones</th>
-            <th class ="text-center"scope="col">Codigo</th>
-            <th class ="text-center"scope="col">Nombre</th>
-            <th class ="text-center"scope="col">Magnitud</th>
-            <th class ="text-center"scope="col">Simbolo</th>
+            <th class ="text-center" scope="col">Acciones</th>
+            <th class ="text-center" scope="col">Codigo</th>
+            <th class ="text-center" scope="col">Nombre</th>
+            <th class ="text-center" scope="col">Magnitud</th>
+            <th class ="text-center" scope="col">Simbolo</th>
         </tr>
     </thead>
     <tbody> 
@@ -38,11 +38,11 @@
           @endforeach
           @else
           <tr>
-            <td class ="text-center"scope="row"> NO HAY REGISTROS</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col">No hay registros</td>
           </tr>
           @endif
         </tbody>

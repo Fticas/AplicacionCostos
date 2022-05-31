@@ -42,8 +42,8 @@
         @else
         <tr>
             <td class ="text-center"scope="row">No hay regitros </td>
-            <td></td>
-            <td></td>
+            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col">No hay registros</td>
         </tr>
         @endif
     </tbody>

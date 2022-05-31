@@ -6,12 +6,11 @@
     @include("layout.tablamateriaprima")
 </div>
 <br>
-<div class="form-group row">
+<div class="form-group row" style="background: transparent;margin: auto; margin-top: -16px; border: 1px solid black;">
     <form action="{{Route('crear_materia_prima')}}">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Agregar Materia Prima</button>
-        </div>
+            <button type="submit" class="btn btn-primary" style = "float: right;margin: 15px;box-shadow: 1px -1px 10px 1px;">Agregar Materia Prima</button> 
     </form>
 </div>
+
 
 @endsection

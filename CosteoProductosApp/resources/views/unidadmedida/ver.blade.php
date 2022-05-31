@@ -23,7 +23,7 @@
     </form>
     <form action="{{route('ver_magnitud')}}">
        
-            <button type="submit" class="btn btn-primary" id ="boton">Ver Magnitud</button> 
+            <button type="submit" class="btn btn-primary" style = "float: right;margin: 15px;box-shadow: 1px -1px 10px 1px;">Ver Magnitud</button> 
     </form>
 </div>
 
