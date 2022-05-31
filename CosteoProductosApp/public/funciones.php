@@ -2,6 +2,8 @@
     use App\Models\UnidadMedida;
     use App\Models\Magnitud;
     use App\Models\Conversion;
+    use App\Models\MateriaPrima;
+    use App\Models\Producto;
 
     /**
      * Devuelve el nombre de la unidad de medida
@@ -21,6 +23,37 @@
     function getNombreMagnitud($id){
         $magnitud = Magnitud::find($id);
         return $magnitud->nombre;
+    }
+
+    /**
+     * Devuelve el nombre de la magnitud de la unidad de medida especificada
+     * @param $id: id de la unidad de medida
+     * @return String
+     */
+    function getNombreMagnitudUnidadMedida($id){
+        $unidadmedida = UnidadMedida::find($id);
+        $magnitud = Magnitud::find($unidadmedida->id_magnitud);
+        return $magnitud->nombre;
+    }
+
+    /**
+     * Devuelve el nombre de la magnitud
+     * @param $id: id de la unidad de medida
+     * @return String
+     */
+    function getNombreMateriaPrima($id){
+        $materiaprima = MateriaPrima::find($id);
+        return $materiaprima->nombre;
+    }
+
+    /**
+     * Devuelve el nombre de la magnitud
+     * @param $id: id de la unidad de medida
+     * @return String
+     */
+    function getNombreProducto($id){
+        $producto = Producto::find($id);
+        return $producto->nombre;
     }
 
     /**
@@ -61,12 +94,27 @@
     function eliminarFactoresConversion($um_referencia)
     {
         $conversion = Conversion::All();
-        foreach($conversion as $conv){
+        foreach($conversion as $conv)
+        {
             $condicion1 = $conv->id_unidad_medida_inicial == $um_referencia->id;
             $condicion2 = $conv->id_unidad_medida_final == $um_referencia->id;
             if($condicion1 || $condicion2)
             {
                 $conv->delete();
+            }
+        }
+    }
+
+    function obtenerFactorConversion($inicial, $final)
+    {
+        $conversiones = Conversion::All();
+        foreach($conversiones as $conversion)
+        {
+            $condicion1 = $conversion->id_unidad_medida_inicial == $inicial;
+            $condicion2 = $conversion->id_unidad_medida_final == $final;
+            if($condicion1 && $condicion2)
+            {
+                return $conversion->factor_conversion;
             }
         }
     }

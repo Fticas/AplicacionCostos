@@ -8,7 +8,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Unidades en existencia</th>
             <th scope="col">Unidad de medida base</th>
-            <th scope="col">Precio actual</th>
+            <th scope="col">Precio unitario</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -23,6 +23,7 @@
             <td>{{getNombreUnidadMedida($mp->id_unidad_medida_base)}}</td>
             <td>${{$mp->precio_unitario}}</td>
             @if($editable)
+            <td><a href="{{route('mostrar_materia_prima', $mp)}}">compra</a></td>
             <td><a href="{{route('editar_materia_prima', $mp)}}">editar</a></td>
             <td><a href="{{route('eliminar_materia_prima', $mp)}}">eliminar</a></td>
             @endif

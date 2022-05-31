@@ -4,11 +4,11 @@
 
 <div>
     <p>
-        <h4>Edite los campos que desea modificar</h4>
+        <h4><br>edicion materia prima</h4>
     </p>
 </div>
 <div>
-    <form action="{{route('actualizar_materia_prima', $materiaprima)}}" method="POST">
+    <form action="{{route('actualizar_receta', $receta)}}" method="POST">
     
         @csrf
         @method('put')
@@ -16,19 +16,25 @@
         <div class="form-group row">
             <label for="inputText" class="col-sm-2 col-form-label">Codigo:</label>
             <div class="col-sm-10">
-                <input readonly type="text" type="text"  name="id" size="20" value="{{$materiaprima->id}}">
+                <input readonly type="text"  name="id" size="20" value="{{$receta->id}}">
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Nombre:</label>
+            <label for="inputText" class="col-sm-2 col-form-label">Producto:</label>
             <div class="col-sm-10">
-                <input type="text"  name="nombre" size="20" value="{{$materiaprima->nombre}}">
+                <input readonly type="text"  name="id_producto" size="20" value="{{getNombreProducto($receta->id_producto)}}">
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Unidades en existencia:</label>
+            <label for="inputText" class="col-sm-2 col-form-label">Materia prima:</label>
             <div class="col-sm-10">
-                <input readonly type="text" type="text"  name="unidadesexistencia" size="20" value="{{$materiaprima->unidades_existencia}}">
+                <input readonly type="text"  name="nombre_materia_prima" size="20" value="{{getNombreMateriaPrima($receta->id_materia_prima)}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputText" class="col-sm-2 col-form-label">Cantidad:</label>
+            <div class="col-sm-10">
+                <input type="text"  name="cantidad" size="20" value="{{$receta->cantidad}}">
             </div>
         </div>
         <div class="form-group row">
@@ -37,12 +43,10 @@
                 @if(count($unidadmedida))
                     <select name="nombre_unidad_medida" aria-label="Default select example" column="70">
                         @foreach($unidadmedida as $um)
-                            @if(getNombreMagnitudUnidadMedida($um->id) == getNombreMagnitudUnidadMedida($materiaprima->id_unidad_medida_base))
-                            @if($materiaprima->id_unidad_medida_base == $um->id)
+                            @if($um->id == $receta->id_unidad_medida)
                             <option selected>{{$um->nombre}}</option>
                             @else
                             <option>{{$um->nombre}}</option>
-                            @endif
                             @endif
                         @endforeach
                     </select>
@@ -52,17 +56,11 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Precio unitario:</label>
-            <div class="col-sm-10">
-                <input readonly type="text" type="text"  name="preciounitario" size="20" value="{{$materiaprima->precio_unitario}}">
-            </div>
-        </div>
-        <div class="form-group row">
             <div class="col-sm-10"> <br>
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </div>
             <div>
-                <a href="{{Route('ver_materia_prima')}}">regresar</a>
+                <a href="{{Route('ver_receta', $receta->id_producto )}}">regresar</a>
             </div>
         </div>
     </form>

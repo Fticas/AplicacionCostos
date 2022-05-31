@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 30);
             $table->string('descripcion', 60);
-            $table->float('imprevisto', 22, 10);
             $table->timestamps();
         });
     }

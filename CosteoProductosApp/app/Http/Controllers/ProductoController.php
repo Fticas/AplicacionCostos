@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
 
 class ProductoController extends Controller
 {
@@ -13,7 +14,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('producto.ver');
+        $editable = true;
+        $productos = Producto::All();
+        return view('producto.ver', compact("editable", "productos"));
     }
 
     /**
@@ -23,7 +26,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto.create');
+        $editable = false;
+        $productos = Producto::All();
+        return view('producto.crear', compact("editable", "productos"));
     }
 
     /**
@@ -34,7 +39,11 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->save();
+        return redirect()->route('crear_producto');
     }
 
     /**
@@ -45,7 +54,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->route('ver_receta', $id);
     }
 
     /**
@@ -56,7 +65,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+        return view('producto.editar', compact("producto"));
     }
 
     /**
@@ -68,7 +78,11 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->update();
+        return redirect()->route('ver_producto');
     }
 
     /**
@@ -79,6 +93,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->delete();
+        return redirect()->route('ver_producto');
     }
 }

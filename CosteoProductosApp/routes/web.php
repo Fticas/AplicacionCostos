@@ -49,6 +49,8 @@ Route::controller(MateriaPrimaController::class)->group(function(){
     Route::get('/materiaprima/ver', 'index')->name('ver_materia_prima');
     Route::get('/materiaprima/crear', 'create')->name('crear_materia_prima');
     Route::post('/materiaprima/guardar', 'store')->name('guardar_materia_prima');
+    Route::get('/materiaprima/{id}/mostrar', 'show')->name('mostrar_materia_prima');
+    Route::put('/materiaprima/{id}/agregar', 'add')->name('agregar_materia_prima');
     Route::get('/materiaprima/{id}/editar', 'edit')->name('editar_materia_prima');
     Route::put('/materiaprima/{id}/actualizar', 'update')->name('actualizar_materia_prima');
     Route::get('/materiaprima/{id}/eliminar', 'destroy')->name('eliminar_materia_prima');
@@ -58,7 +60,17 @@ Route::controller(ProductoController::class)->group(function(){
     Route::get('/producto/ver', 'index')->name('ver_producto');
     Route::get('/producto/crear', 'create')->name('crear_producto');
     Route::post('/producto/guardar', 'store')->name('guardar_producto');
+    Route::get('/producto/{id}/mostrar', 'show')->name('mostrar_producto');
     Route::get('/producto/{id}/editar', 'edit')->name('editar_producto');
     Route::put('/producto/{id}/actualizar', 'update')->name('actualizar_producto');
     Route::get('/producto/{id}/eliminar', 'destroy')->name('eliminar_producto');
+});
+
+Route::controller(RecetaController::class)->group(function(){
+    Route::get('/receta/{id}/ver', 'index')->name('ver_receta');
+    Route::get('/receta/crear', 'create')->name('crear_receta');
+    Route::post('/receta/guardar', 'store')->name('guardar_receta');
+    Route::get('/receta/{id}/editar', 'edit')->name('editar_receta');
+    Route::put('/receta/{id}/actualizar', 'update')->name('actualizar_receta');
+    Route::get('/receta/{id}/eliminar', 'destroy')->name('eliminar_receta');
 });
