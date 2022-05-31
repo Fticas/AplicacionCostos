@@ -103,6 +103,13 @@ body{
 	border: 1px solid;
 }
 
+#formulario_producto{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
 #editar_magnitud{
 	color: black;
 	text-decoration: blink;
@@ -110,6 +117,19 @@ body{
 	border: 1px solid;
 }
 
+#editar_conversion{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
+
+#editar_producto{
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+	border: 1px solid;
+}
 
 /*************************************/
 /*PARTE BAJA TABLA*/
@@ -170,3 +190,4 @@ body{
 	background: rgba(200, 0, 0, 0.75);
 	color: white;
 }
+

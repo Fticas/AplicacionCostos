@@ -16,7 +16,7 @@
 <div>
     @include("layout.tablaunidadmedida")
 </div>
-
+<br>
 <div class="form-group row" style="background: transparent;margin: auto; margin-top: -16px; border: 1px solid black;">
     <form action="{{Route('crear_unidad_medida')}}">
             <button type="submit" class="btn btn-primary" id ="boton">Agregar Unidad de Medida</button> 

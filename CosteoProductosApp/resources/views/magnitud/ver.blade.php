@@ -12,10 +12,12 @@
     <div id="actualizar" class="alert alert-success alert-dismissible fade show" role="alert">
         {{session('registro_actualizado')}}
     </div>
-@endif    
+@endif
+
 <div>
     @include("layout.tablamagnitud")
 </div>
+<br>
 <div class="form-group row"style="background: transparent;margin: auto; margin-top: -16px; border: 1px solid black; ">
     <form action="{{route('crear_magnitud')}}">
         <div class="col-sm-12">
