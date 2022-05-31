@@ -1,0 +1,141 @@
+*{
+	background: rgba(100, 255,65, 0.35);	/*Color 1 rgba(23, 155, 32, 0.35);*/
+	
+}
+/*HEADER*/
+#miheader{
+
+		margin-top: -8px;
+		padding-right: 512px;
+		margin-left:  200px;
+	  	margin-right: 200px;
+	  	height: 150px; 
+	  	background-color: transparent	;
+}
+
+/*CONTENEDOR SUPERIOR*/  /*rgba(31, 181, 189, 0.53);*/
+.container-fluid{
+	margin: 0;
+	padding: 0;
+	
+}
+
+.navbar-brand{
+	margin-left: -15px;
+}
+
+
+#navbarNavDropdown{ 
+	background: ;
+	border: 1px solidd;
+	box-shadow: 3px 10px 10px 10px;
+}
+
+.nav-item{
+	margin-left: 0px;
+}
+
+.nav-item:hover{
+	background: white;
+	color: white;
+	transition: background 1s,color 1s;
+	box-shadow: 0px 5px 15px 0.5px;
+}
+
+
+
+/*******************************************************************/
+
+/*CONTENIDO DEL CUERPO DE PAGINA*/
+
+/*CONTENIDO INTERIOR*/
+
+#contenido{ 
+	border: 3px solid black; 
+	color: black;
+	margin-right: 200px;
+	margin-left: 200px;
+	background: rgba(0,0,0,0.35);
+	box-shadow: 10px -10px 20px 3px;
+}
+.scroll-div{
+			align-self: auto;
+            height: 559px;
+            overflow-y: scroll;
+            background: transparent;
+        }
+
+body{
+	background: transparent;
+	box-shadow: -10px 10px 8px 10px;
+
+}
+/*************************************/
+.table{
+	color: black;
+	text-decoration: blink;
+	background: white;   
+	
+}
+
+.form-group{
+	margin: auto;
+	background: white;
+}
+
+#formulario{
+
+	color: black;
+	text-decoration: blink;
+	background: transparent; 
+
+}
+
+/*************************************/
+/*PARTE BAJA TABLA*/
+
+.form-group{
+/*Igual que el superior*/
+	background: ghostwhite;
+	box-shadow: 0px -2px 2px 1px;
+}
+
+
+/*******************************************************************/
+
+#texto{
+	margin-left: 200px;
+	background: #222;
+}
+#copy{
+	background: #222;
+}
+#alfajor{
+	background: #222;
+}
+
+
+/*******************************************************************/
+
+
+#boton{
+	float: right;
+	margin: 15px;
+	box-shadow: 1px -1px 10px 1px;
+}
+/****************************************************/
+
+#crear{
+	background: rgba(10, 200, 10, 0.65);
+	color: white;
+}
+
+#actualizar{
+	background: rgba(10, 200, 10, 0.65);
+	color: white;
+
+}
+#borrar{
+	background: rgba(200, 0, 0, 0.75);
+	color: white;
+}
