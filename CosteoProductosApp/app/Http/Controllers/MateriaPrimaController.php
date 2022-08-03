@@ -62,37 +62,7 @@ class MateriaPrimaController extends Controller
      */
     public function show($id)
     {
-        $materiaprima = MateriaPrima::find($id);
-        $unidadmedida = UnidadMedida::All();
-        return view("materiaprima.mostrar", compact("materiaprima", "unidadmedida"));
-    }
-
-    /**
-     * 
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function add(Request $request, $id)
-    {
-        $materiaprima = MateriaPrima::find($id);
-        $unidadmedida = UnidadMedida::where("nombre", $request->nombre_unidad_medida)->first();
-        if($materiaprima->id_unidad_medida_base != $unidadmedida->id)
-        {
-            $factor = obtenerFactorConversion($materiaprima->id_unidad_medida_base, $unidadmedida->id);
-            $materiaprima->precio_unitario /= $factor;
-            $materiaprima->unidades_existencia *= $factor;
-            $materiaprima->id_unidad_medida_base = $unidadmedida->id;
-        }
-        $precio_unitario_compra = $request->preciocompra / $request->cantidad;
-        $precio_nuevo = $materiaprima->unidades_existencia * $materiaprima->precio_unitario;
-        $precio_nuevo += ($request->cantidad * $precio_unitario_compra);
-        $materiaprima->unidades_existencia += $request->cantidad;
-        $precio_nuevo /= $materiaprima->unidades_existencia;
-        $materiaprima->precio_unitario = $precio_nuevo;
-        $materiaprima->update();
-        return redirect()->route('mostrar_materia_prima', $id);
+        
     }
 
     /**

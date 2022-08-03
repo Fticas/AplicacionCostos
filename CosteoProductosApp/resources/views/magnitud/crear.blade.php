@@ -9,7 +9,7 @@
                         <i class="fa fa-home fa-fw"></i> 
                     </a>
                 </div>
-                <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de la unidad de medida</h4>
+                <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de una nueva magnitud</h4>
             </div>
             <br>
 </div>

@@ -42,7 +42,7 @@ class OperarioController extends Controller
         $operario = new Operario();
         $operario->nombre = $request->nombre;
         $operario->pago_hora = $request->salario_hora;
-        //$operario->save();
+        $operario->save();
         return redirect()->route('crear_operario');
     }
 

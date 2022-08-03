@@ -5,7 +5,9 @@
 <table class="table">
     <thead>
         <tr>
+            @if($editable)
             <th class ="text-center" scope="col">Acciones</th>
+            @endif
             <th class ="text-center" scope="col">Codigo</th>
             <th class ="text-center" scope="col">Nombre</th>
             <th class ="text-center" scope="col">Unidades en existencia</th>
@@ -17,24 +19,22 @@
         @if(count($materiaprima))
         @foreach($materiaprima as $mp)
         <tr>
+            @if($editable)
             <td class="text-center" width="20%">
-                    <a href="{{route('mostrar_materia_prima', $mp)}}" class="btn btn-primary btn-sm shadow-none" 
-                            data-toggle="tooltip" data-placement="top" title="Compra">
-                        <i class="fa fa-book fa-fw text-white"></i></a>
-                    </a>
-                    <a href="{{route('editar_materia_prima', $mp)}}" class="btn btn-success btn-sm shadow-none" 
-                            data-toggle="tooltip" data-placement="top" title="Editar Registro">
-                        <i class="fa fa-pencil fa-fw text-white"></i></a>
-                    </a>
-                    <form action="{{route('eliminar_materia_prima', $mp)}}" method="GET" class="d-inline-block">
-                        <button id="delete" name="delete" type="submit" 
-                                class="btn btn-danger btn-sm shadow-none" 
-                                data-toggle="tooltip" data-placement="top" title="Eliminar Registro"
-                                onclick="return confirm('¿Estás seguro de eliminar?')">
-                            <i class="fa fa-trash-o fa-fw"></i>
-                        </button>
-                    </form>
+                <a href="{{route('editar_materia_prima', $mp)}}" class="btn btn-success btn-sm shadow-none" 
+                        data-toggle="tooltip" data-placement="top" title="Editar Registro">
+                    <i class="fa fa-pencil fa-fw text-white"></i></a>
+                </a>
+                <form action="{{route('eliminar_materia_prima', $mp)}}" method="GET" class="d-inline-block">
+                    <button id="delete" name="delete" type="submit" 
+                            class="btn btn-danger btn-sm shadow-none" 
+                            data-toggle="tooltip" data-placement="top" title="Eliminar Registro"
+                            onclick="return confirm('¿Estás seguro de eliminar?')">
+                        <i class="fa fa-trash-o fa-fw"></i>
+                    </button>
+                </form>
             </td>
+            @endif
             <td class ="text-center" scope="col">{{$mp->id}}</td>
             <td class ="text-center" scope="col">{{$mp->nombre}}</td>
             <td class ="text-center" scope="col">{{$mp->unidades_existencia}}</td>
@@ -45,10 +45,11 @@
         @else
         <tr>
             <td class ="text-center"scope="row"> No hay registros</td>
-            <td class ="text-center" scope="col">No hay registros</td>
-            <td class ="text-center" scope="col">No hay registros</td>
-            <td class ="text-center" scope="col">No hay registros</td>
-            <td class ="text-center" scope="col">No hay registros</td>
+            <td class ="text-center" scope="col"></td>
+            <td class ="text-center" scope="col"></td>
+            <td class ="text-center" scope="col"></td>
+            <td class ="text-center" scope="col"></td>
+            <td class ="text-center" scope="col"></td>
           </tr>
         @endif
     </tbody>

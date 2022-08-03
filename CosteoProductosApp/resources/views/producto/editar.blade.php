@@ -35,12 +35,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Imprevisto:</label>
-            <div class="col-sm-10">
-                <input type="text" rows="2" name="imprevisto" size="20" value = "{{$producto->imprevisto}}" style="background:white;">
-            </div>
-        </div>
-        <div class="form-group row">
             <div class="col-sm-12"> <br>
                 <button type="submit" class="btn btn-primary" style ="margin: 15px;box-shadow: 1px -1px 10px 1px; float:right">Actualizar</button>
             </div>

@@ -4,18 +4,21 @@
 <table class="table" >
     <thead>
         <tr>
+            @if($editable)
             <th class ="text-center" scope="col">Acciones</th>
+            @endif
             <th class ="text-center" scope="col">Codigo</th>
             <th class ="text-center" scope="col">Nombre</th>
             <th class ="text-center" scope="col">Magnitud</th>
             <th class ="text-center" scope="col">Simbolo</th>
         </tr>
-    </thead>
+    </thead>`
     <tbody> 
             @if(count($unidadmedida))
             @foreach($unidadmedida as $um)
             
             <tr>
+                @if($editable)
                 <td class="text-center" width="20%">
                     <a href="{{Route('editar_unidad_medida', $um)}}" class="btn btn-success btn-sm shadow-none" 
                             data-toggle="tooltip" data-placement="top" title="Editar Registro">
@@ -30,9 +33,10 @@
                         </button>
                     </form>
                 </td>
+                @endif
                 <td class ="text-center"scope="row">{{$um->id}}</td>
                 <td class ="text-center"scope="row">{{$um->nombre}}</td>
-                <td class ="text-center"scope="row">{{$um->magnitud}}</td>
+                <td class ="text-center"scope="row">{{getNombreMagnitud($um->id_magnitud)}}</td>
                 <td class ="text-center"scope="row">{{$um->simbolo}}</td> 
             </tr>
           @endforeach

@@ -1,5 +1,5 @@
 <br>
-    <h4 class="text-center">Unidades de Medida</h4>
+    <h4 class="text-center">Materia prima para la elaboracion de {{$producto->nombre}}</h4>
 <br>
 <table class="table">
     <thead>

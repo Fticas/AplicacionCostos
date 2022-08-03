@@ -5,10 +5,7 @@
 <div class="row"style="margin:auto;">
         <div class="col-md-12" style="margin:auto;background: transparent;">
             <div class="pull-right"style="background:transparent;">
-                <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Ir a productos" href="{{Route('ver_producto')}}"style="margin-top: 10px;margin-bottom: 10px;"> 
-                    <i class="fa fa-home fa-fw"></i> 
-                </a>
-                <a class="btn btn-success" href="{{Route('ver_receta', $receta->id_producto )}}" title="Regresar">Regresar</a>
+                <a class="btn btn-success" style="margin-top: 10px;margin-bottom: 10px;" href="{{Route('ver_receta', $receta->id_producto )}}" title="Regresar">Regresar</a>
             </div>
             <h4 class="text-center"style="background: transparent;margin-top: 10px;" >Edite los campos que desea modificar</h4>
         </div>
