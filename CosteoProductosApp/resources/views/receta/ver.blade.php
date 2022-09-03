@@ -4,11 +4,11 @@
 
 <br>
 <div style="border: 1px solid;" >
-    <div class="row row-cols-3" style="background:transparent" >
-        <div class="col" style=" background: transparent;border:1px solid;margin-left: 250px;">
+    <div class="row row-cols-1" style="background:transparent" >
+        <div class="col" style=" background: transparent;border:1px solid;margin-left:">
             
             <div class="col-sm-10" style=" background: transparent;"><h4 class = "text-center"style="background:transparent
-            ">Descripcion</h4><br></div>
+                ">Descripcion del producto</h4><br></div>
             <div class="col-sm-10" style="background:transparent"> Codigo: {{$producto->id}}</div>
             <div class="col-sm-10" style="background:transparent">Nombre: {{$producto->nombre}}</div>
             <div class="col-sm-10" style="background:transparent">Descripcion: {{$producto->descripcion}}</div>
@@ -25,6 +25,11 @@
                 </div>
                 
                 <div class="form-group row">
+                    <div>
+                        <p >
+                            <h5 class = "text-center" style="background:transparent" >Seleccione la materia prima que desea agregar a la receta</h5>
+                        </p>
+                    </div>
                     <label for="inputSelect" class="col-sm-2 col-form-label">Insumo:</label>
                     <div class="col-sm-10">
                         @if(count($materiaprima))
@@ -66,7 +71,7 @@
     </div>
     <div class="pull-right"style="background:transparent;">
         <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Regresar" href="{{Route('ver_producto')}}"style="margin-top: 25px;margin-bottom: 10px;"> 
-                    Regresar
+            Regresar
         </a>
     </div>      
 </div>

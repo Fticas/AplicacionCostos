@@ -17,7 +17,7 @@
         <tr>
             <td>{{$op->id}}</td>
             <td>{{$op->nombre}}</td>
-            <td>{{$op->simbolo}}</td>
+            <td>$  {{$op->pago_hora}}</td>
             @if($editable)
             <td><a href="{{route('editar_operario', $op)}}">editar</a></td>
             <td><a href="{{route('eliminar_operario', $op)}}">eliminar</a></td>

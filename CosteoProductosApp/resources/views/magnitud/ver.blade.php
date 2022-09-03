@@ -25,7 +25,7 @@
         </div>
     </form>
     <form action="{{Route('ver_unidad_medida')}}">
-            <button type="submit" class="btn btn-primary" id ="boton">Ver Unidad de medida</button> 
+            <button type="submit" class="btn btn-primary" id ="boton">Unidades de medida</button> 
     </form>
 
 </div>

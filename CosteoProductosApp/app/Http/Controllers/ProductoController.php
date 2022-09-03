@@ -42,9 +42,6 @@ class ProductoController extends Controller
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
-        /*Agregando imprevisto*/
-        $producto->imprevisto = $request->imprevisto;
-        /*Agregando imprevisto*/
         $producto->save();
         return redirect()->route('crear_producto');
     }

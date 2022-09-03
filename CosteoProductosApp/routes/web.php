@@ -49,8 +49,6 @@ Route::controller(MateriaPrimaController::class)->group(function(){
     Route::get('/materiaprima/ver', 'index')->name('ver_materia_prima');
     Route::get('/materiaprima/crear', 'create')->name('crear_materia_prima');
     Route::post('/materiaprima/guardar', 'store')->name('guardar_materia_prima');
-    Route::get('/materiaprima/{id}/mostrar', 'show')->name('mostrar_materia_prima');
-    Route::put('/materiaprima/{id}/agregar', 'add')->name('agregar_materia_prima');
     Route::get('/materiaprima/{id}/editar', 'edit')->name('editar_materia_prima');
     Route::put('/materiaprima/{id}/actualizar', 'update')->name('actualizar_materia_prima');
     Route::get('/materiaprima/{id}/eliminar', 'destroy')->name('eliminar_materia_prima');
@@ -83,3 +81,4 @@ Route::controller(OperarioController::class)->group(function(){
     Route::put('/operario/{id}/actualizar', 'update')->name('actualizar_operario');
     Route::get('/operario/{id}/eliminar', 'destroy')->name('eliminar_operario');
 });
+

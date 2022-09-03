@@ -9,7 +9,7 @@
                         Regresar
                     </a>
                 </div>
-                <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de la unidad de medida</h4>
+                <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de la materia prima</h4>
             </div>
             <br>
 </div>

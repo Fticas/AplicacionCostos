@@ -34,7 +34,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{route('ver_producto')}}">Productos</a></li>
                         <li><a class="dropdown-item" href="{{route('ver_materia_prima')}}">Materia prima</a></li>
-                        <li><a class="dropdown-item" href="#">Recetas</a></li>
                         <li><a class="dropdown-item" href="{{route('ver_unidad_medida')}}">Unidad de medida</a></li>
                         <li><a class="dropdown-item" href="{{route('ver_conversion')}}">Factor de conversion</a></li>
                     </ul>
@@ -43,7 +42,7 @@
                     <a class="nav-link" href="#">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Empleados</a>
+                    <a class="nav-link" href="{{route('ver_operario')}}">Empleados</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Calculo de Costos</a>
