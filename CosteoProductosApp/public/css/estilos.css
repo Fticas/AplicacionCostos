@@ -204,18 +204,26 @@ body{
 
 /****************************************************/
 
-#crear{
+.crear{
+
 	background: rgba(10, 200, 10, 0.65);
-	color: white;
+	color: black;
+	text-align: center;
+	font-size: large;
+	margin-bottom: 0px;
 }
 
-#actualizar{
+.actualizar{
 	background: rgba(10, 200, 10, 0.65);
-	color: white;
+	color: black;
+	text-align: center;
+	font-size: large;
+	margin-bottom: 0px;
 
 }
-#borrar{
+.borrar{
 	background: rgba(200, 0, 0, 0.75);
-	color: white;
-}
-
+	color: black;
+	text-align: center;
+	font-size: large;
+	margin-bottom: 0px;
