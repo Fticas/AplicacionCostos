@@ -9,35 +9,34 @@
                         Regresar
             </a>
         </div>
-        <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de la materia prima</h4>
+        <h4 class="text-center"style="background: transparent; margin-top: 10px;">Ingrese los datos de la compra</h4>
     </div>
     <br>
 </div>
 
 
-<div id="formulario_materia_prima">
-    <form action="{{route('guardar_materia_prima')}}" method="POST">
+<div id="formulario_compra">
+    <form action="{{route('guardar_compra')}}" method="POST">
     
         @csrf
-
         <div class="form-group row">
-            <label for="inputText" class="col-sm-2 col-form-label">Nombre:</label>
+            <label for="inputSelect" class="col-sm-2 col-form-label">Proveedor:</label>
             <div class="col-sm-10">
-                <input type="text"  name="nombre" size="20" placeholder="Nombre" style="background:white">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputSelect" class="col-sm-2 col-form-label">Unidad de Medida Base:</label>
-            <div class="col-sm-10">
-                @if(count($unidadmedida))
-                    <select name="nombre_unidadmedida" aria-label="Default select example" column="70" style="background:white">
-                        @foreach($unidadmedida as $um)
-                            <option>{{$um->nombre}}</option>
+                @if(count($proveedores))
+                    <select name="nombre_proveedor" aria-label="Default select example" column="70" style="background:white">
+                        @foreach($proveedores as $proveedor)
+                            <option>{{$proveedor->nombre}}</option>
                         @endforeach
                     </select>
                 @else
-                    <select name="nombre_unidadmedida" aria-label="Default select example" column="70"></select>
+                    <select name="nombre_proveedor" aria-label="Default select example" column="70"></select>
                 @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputText" class="col-sm-2 col-form-label">Fecha de compra:</label>
+            <div class="col-sm-10">
+                <input type="date"  name="fecha" size="20" style="background:white">
             </div>
         </div>
         <div class="form-group row">
@@ -53,8 +52,7 @@
 </div>
 <br>
 <div>
-
-    @include("layout.tablamateriaprima")
+    @include("layout.tablacompra")
 </div>
 
 @endsection

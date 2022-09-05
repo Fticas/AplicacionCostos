@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_entrega');
             $table->boolean('estado');
-            $table->float('imprevisto', 22, 10);
-            $table->float('descuento', 22, 10);
+            $table->double('imprevisto', 22, 10);
+            $table->double('descuento', 22, 10);
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('operario', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 40);
-            $table->float('pago_hora', 22, 10);
+            $table->double('pago_hora', 22, 10);
             $table->timestamps();
         });
     }

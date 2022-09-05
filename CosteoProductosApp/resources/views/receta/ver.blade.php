@@ -78,7 +78,6 @@
 <br>
 <div>
     @include("layout.tablareceta")
-    
 </div>
 
 @endsection

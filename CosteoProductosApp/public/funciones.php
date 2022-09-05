@@ -4,6 +4,7 @@
     use App\Models\Conversion;
     use App\Models\MateriaPrima;
     use App\Models\Producto;
+    use App\Models\Proveedor;
 
     /**
      * Devuelve el nombre de la unidad de medida
@@ -117,5 +118,10 @@
                 return $conversion->factor_conversion;
             }
         }
+    }
+
+    function obtenerNombreProveedor($id){
+        $proveedor = Proveedor::find($id);
+        return $proveedor->nombre;
     }
 ?>

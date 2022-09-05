@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Proveedores</a>
+                    <a class="nav-link" href="{{Route('ver_proveedor')}}">Proveedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('ver_operario')}}">Empleados</a>

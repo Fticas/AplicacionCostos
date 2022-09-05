@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('receta', function (Blueprint $table) {
+        Schema::create('orden_compra', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_producto')->constrained('producto')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('id_materia_prima')->constrained('materia_prima')->onUpdate('cascade')->onDelete('cascade');
-            $table->float('cantidad', 22, 10);
+            $table->foreignId('id_compra')->constrained('compra')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('cantidad');
             $table->foreignId('id_unidad_medida')->constrained('unidad_medida')->onUpdate('cascade')->onDelete('cascade');
+            $table->double('precio_total', 22, 10);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receta');
+        Schema::dropIfExists('orden_compra');
     }
 };

@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unidad_medida', function (Blueprint $table) {
+        Schema::create('proveedor', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 30);
-            $table->foreignId('id_magnitud')->constrained('magnitud')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('simbolo', 10);
+            $table->string('nombre', 40);
+            $table->string('descripcion', 100);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unidad_medida');
+        Schema::dropIfExists('proveedor');
     }
 };

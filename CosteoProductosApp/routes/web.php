@@ -82,3 +82,28 @@ Route::controller(OperarioController::class)->group(function(){
     Route::get('/operario/{id}/eliminar', 'destroy')->name('eliminar_operario');
 });
 
+Route::controller(ProveedorController::class)->group(function(){
+    Route::get('/proveedor/ver', 'index')->name('ver_proveedor');
+    Route::get('/proveedor/crear', 'create')->name('crear_proveedor');
+    Route::post('/proveedor/guardar', 'store')->name('guardar_proveedor');
+    Route::get('/proveedor/{id}/editar', 'edit')->name('editar_proveedor');
+    Route::put('/proveedor/{id}/actualizar', 'update')->name('actualizar_proveedor');
+    Route::get('/proveedor/{id}/eliminar', 'destroy')->name('eliminar_proveedor');
+});
+
+//Falta modificar el archivo editar compra
+//Se considerara a futuro por falta de utilidad
+Route::controller(CompraController::class)->group(function(){
+    Route::get('/compra/ver', 'index')->name('ver_compra');
+    Route::get('/compra/crear', 'create')->name('crear_compra');
+    Route::post('/compra/guardar', 'store')->name('guardar_compra');
+    Route::get('/compra/{id}/editar', 'edit')->name('editar_compra');
+    Route::put('/compra/{id}/actualizar', 'update')->name('actualizar_compra');
+    Route::get('/compra/{id}/eliminar', 'destroy')->name('eliminar_compra');
+});
+
+//
+Route::controller(OrdenCompraController::class)->group(function(){
+    Route::get('/ordencompra/{id}/ver', 'index')->name('ver_orden_compra');
+    Route::post('/ordencompra/guardar', 'store')->name('guardar_orden_compra');
+});

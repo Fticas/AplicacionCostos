@@ -39,7 +39,7 @@
             <td class ="text-center" scope="col">{{$mp->nombre}}</td>
             <td class ="text-center" scope="col">{{$mp->unidades_existencia}}</td>
             <td class ="text-center" scope="col">{{getNombreUnidadMedida($mp->id_unidad_medida_base)}}</td>
-            <td class ="text-center" scope="col">${{$mp->precio_unitario}}</td>
+            <td class ="text-center" scope="col">${{number_format($mp->precio_unitario, 2)}}</td>
         </tr>
         @endforeach
         @else

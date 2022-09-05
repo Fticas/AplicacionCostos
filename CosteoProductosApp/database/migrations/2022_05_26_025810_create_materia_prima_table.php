@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 30);
             $table->float('unidades_existencia', 22, 10);
-            $table->foreignId('id_unidad_medida_base')->constrained('unidad_medida')
-                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_unidad_medida_base')->constrained('unidad_medida')->onUpdate('cascade')->onDelete('cascade');
             $table->double('precio_unitario', 22, 10);
             $table->timestamps();
         });

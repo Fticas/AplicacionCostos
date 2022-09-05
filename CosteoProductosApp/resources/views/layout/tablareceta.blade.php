@@ -15,7 +15,8 @@
         @if(count($recetas))
         @foreach($recetas as $receta)
         @if($receta->id_producto == $producto->id)
-        <tr><td class="text-center" width="20%">
+        <tr>
+            <td class="text-center" width="20%">
                     <a href="{{route('editar_receta', $receta)}}" class="btn btn-success btn-sm shadow-none" 
                             data-toggle="tooltip" data-placement="top" title="Editar Registro">
                         <i class="fa fa-pencil fa-fw text-white"></i></a>
