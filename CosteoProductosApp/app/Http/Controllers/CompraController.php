@@ -17,9 +17,8 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $editable = true;
         $compras = Compra::All();
-        return view('compra.ver', compact("editable", "compras"));
+        return view('compra.ver', compact("compras"));
     }
 
     /**
@@ -29,10 +28,9 @@ class CompraController extends Controller
      */
     public function create()
     {
-        $editable = false;
         $compras = Compra::All();
         $proveedores = Proveedor::All();
-        return view('compra.crear', compact("editable", "compras", "proveedores"));
+        return view('compra.crear', compact("compras", "proveedores"));
     }
 
     /**

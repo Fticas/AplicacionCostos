@@ -18,7 +18,7 @@
         @foreach($materiaprima as $mp)
         <tr>
             <td class="text-center" width="20%">
-                    <a href="{{route('mostrar_materia_prima', $mp)}}" class="btn btn-primary btn-sm shadow-none" 
+                    <a href="{{route('ver_materia_prima', $mp)}}" class="btn btn-primary btn-sm shadow-none" 
                             data-toggle="tooltip" data-placement="top" title="Compra">
                         <i class="fa fa-book fa-fw text-white"></i></a>
                     </a>

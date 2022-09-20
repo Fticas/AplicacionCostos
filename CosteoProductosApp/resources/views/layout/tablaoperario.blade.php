@@ -8,6 +8,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Precio por hora</th>
             <th scope="col"></th>
+            <th scope="col">Acciones</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
             @if($editable)
             <td><a href="{{route('editar_operario', $op)}}">editar</a></td>
             <td><a href="{{route('eliminar_operario', $op)}}">eliminar</a></td>
+            <th scope="col"></th>
             @endif
         </tr>
         @endforeach
