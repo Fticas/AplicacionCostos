@@ -18,9 +18,7 @@ class MateriaPrimaController extends Controller
      */
     public function index()
     {
-        $editable = true;
-        $materiaprima = MateriaPrima::All();
-        return view('materiaprima.ver', compact("editable", "materiaprima"));
+        return view('materiasprimas.ver');
     }
 
     /**
@@ -33,7 +31,7 @@ class MateriaPrimaController extends Controller
         $editable = false;
         $materiaprima = MateriaPrima::All();
         $unidadmedida = UnidadMedida::All();
-        return view('materiaprima.crear', compact("editable", "materiaprima", "unidadmedida"));
+        return view('materiasprimas.crear', compact("editable", "materiaprima", "unidadmedida"));
     }
 
     /**
@@ -75,7 +73,7 @@ class MateriaPrimaController extends Controller
     {
         $materiaprima = MateriaPrima::find($id);
         $unidadmedida = UnidadMedida::All();
-        return view("materiaprima.editar", compact("materiaprima", "unidadmedida"));
+        return view("materiasprimas.editar", compact("materiaprima", "unidadmedida"));
     }
 
     /**

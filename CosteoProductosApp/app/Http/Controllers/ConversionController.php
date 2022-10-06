@@ -17,8 +17,7 @@ class ConversionController extends Controller
      */
     public function index()
     {
-        $conversion = Conversion::All();
-        return view("conversion.ver", compact("conversion"));
+        return view("conversiones.ver");
     }
 
     /**

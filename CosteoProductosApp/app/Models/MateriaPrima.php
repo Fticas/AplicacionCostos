@@ -9,5 +9,5 @@ class MateriaPrima extends Model
 {
     use HasFactory;
 
-    protected $table = "materia_prima";
+    protected $table = 'materias_primas';
 }

@@ -18,12 +18,7 @@ class UnidadMedidaController extends Controller
      */
     public function index()
     {
-        $editable = true;
-        //SUSTITUYENDO METODO DE LLAMADA
-        /*$unidadmedida = UnidadMedida::All();*/
-        //SUSTITUYENDO METODO DE LLAMADA
-        $unidadmedida = UnidadMedida::orderby('id','ASC')->paginate(5); //NUEVA LLAMADA
-        return view('unidadmedida.ver', compact("editable", "unidadmedida"));
+        return view('unidadesmedida.ver');
     }
 
     /**
@@ -33,13 +28,11 @@ class UnidadMedidaController extends Controller
      */
     public function create()
     {
-        $editable = false;
-        //SUSTITUYENDO METODO DE LLAMADA
-        /*$unidadmedida = UnidadMedida::All();*/
-        //SUSTITUYENDO METODO DE LLAMADA
+        /*$editable = false;
         $unidadmedida = UnidadMedida::orderby('id','ASC')->paginate(5); //NUEVA LLAMADA
         $magnitud = Magnitud::All();
-        return view("unidadmedida.crear", compact("editable", "unidadmedida", "magnitud"));
+        return view("unidadmedida.crear", compact("editable", "unidadmedida", "magnitud"));*/
+        return "Vista de prueba";
     }
 
     /**

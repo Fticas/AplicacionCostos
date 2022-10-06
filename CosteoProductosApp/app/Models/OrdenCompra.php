@@ -9,5 +9,5 @@ class OrdenCompra extends Model
 {
     use HasFactory;
 
-    protected $table = "orden_compra";
+    protected $table = 'ordenes_compra';
 }

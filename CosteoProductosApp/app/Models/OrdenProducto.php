@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UnidadMedida extends Model
+class OrdenProducto extends Model
 {
     use HasFactory;
 
-    protected $table = 'unidades_medida';
+    protected $table = 'ordenes_producto';
 }

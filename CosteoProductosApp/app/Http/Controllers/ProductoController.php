@@ -14,9 +14,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $editable = true;
-        $productos = Producto::All();
-        return view('producto.ver', compact("editable", "productos"));
+        return view('productos.ver');
     }
 
     /**

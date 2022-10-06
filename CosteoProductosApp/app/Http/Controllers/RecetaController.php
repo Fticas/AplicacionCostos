@@ -18,13 +18,9 @@ class RecetaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $producto = Producto::find($id);
-        $recetas = Receta::All();
-        $materiaprima = MateriaPrima::All();
-        $unidadmedida = UnidadMedida::All();
-        return view('receta.ver', compact("producto", "recetas", "materiaprima", "unidadmedida"));
+        return view('recetas.ver');
     }
 
     /**
@@ -45,6 +41,7 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $materiaprima = MateriaPrima::where('nombre', $request->nombre_materia_prima)->first();
         $unidadmedida = UnidadMedida::where('nombre', $request->nombre_unidad_medida)->first();
         $receta = new Receta();
@@ -54,7 +51,7 @@ class RecetaController extends Controller
         $receta->id_unidad_medida = $unidadmedida->id;
         $receta->save();
         $producto = Producto::find($request->id_producto);
-        return redirect()->route('mostrar_producto', $producto);
+        return redirect()->route('mostrar_producto', $producto);*/
     }
 
     /**
@@ -76,10 +73,11 @@ class RecetaController extends Controller
      */
     public function edit($id)
     {
+        /*
         $receta = Receta::find($id);
         $materiaprima = MateriaPrima::All();
         $unidadmedida = UnidadMedida::All();
-        return view('receta.editar', compact("receta", "materiaprima", "unidadmedida"));
+        return view('receta.editar', compact("receta", "materiaprima", "unidadmedida"));*/
     }
 
     /**
@@ -91,12 +89,13 @@ class RecetaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        /*
         $receta = Receta::find($id);
         $unidadmedida = UnidadMedida::where('nombre', $request->nombre_unidad_medida)->first();
         $receta->cantidad = $request->cantidad;
         $receta->id_unidad_medida = $unidadmedida->id;
         $receta->update();
-        return redirect()->route('ver_receta', $receta->id_producto);
+        return redirect()->route('ver_receta', $receta->id_producto);*/
     }
 
     /**

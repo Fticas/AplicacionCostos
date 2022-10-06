@@ -9,5 +9,5 @@ class Magnitud extends Model
 {
     use HasFactory;
 
-    protected $table = "magnitud";
+    protected $table = 'magnitudes';
 }

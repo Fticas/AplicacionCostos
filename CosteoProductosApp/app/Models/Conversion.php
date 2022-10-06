@@ -9,5 +9,5 @@ class Conversion extends Model
 {
     use HasFactory;
 
-    protected $table = "conversion";
+    protected $table = 'conversiones';
 }

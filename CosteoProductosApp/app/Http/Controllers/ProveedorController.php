@@ -14,9 +14,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        $editable = true;
-        $proveedores = Proveedor::All();
-        return view('proveedor.ver', compact("proveedores", "editable"));
+        return view('proveedores.ver');
     }
 
     /**
