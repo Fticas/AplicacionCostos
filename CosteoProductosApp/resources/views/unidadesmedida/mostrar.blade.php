@@ -4,20 +4,15 @@
 
 <div style="padding: 20px;">
     <div class="pull-right"style="background:transparent;">
-        <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('unidadesmedida.show', $unidad_medida->id)}}" style="margin-top: 10px;margin-bottom: 10px;"> 
+        <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('unidadesmedida.index')}}" style="margin-top: 10px;margin-bottom: 10px;"> 
             <i class="fa fa-arrow-left" aria-hidden="true"> Regresar</i>
+        </a>
+        <a class="btn btn-success" data-placement="top" title="Regresar" href="{{route('unidadesmedida.edit', $unidad_medida->id)}}" style="margin-top: 10px;margin-bottom: 10px;"> 
+            <i class="fa fa-pencil fa-fw"></i> Edit
         </a>
     </div>
     <div class="card" style="background-color: #F4F6F6;">
-        <form action="{{route('unidadesmedida.update', $unidad_medida)}}" method="POST" class="row g-3" style="padding: 25px;">
-            @csrf
-            @method('put')
-            <input type="hidden" name=_token value='{{csrf_token()}}'>
-            <!--Encabezado del formulario-->
-            <div>
-                <h5 style="text-align: center;">Edite los campos que desea modificar</h5>
-                <br>
-            </div>
+        <form action="" method="" class="row g-3" style="padding: 25px;">
             <!--Id de la unidad de medida-->
             <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Id</label>
@@ -26,24 +21,25 @@
             <!--Nombre de la unidad de medida-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Nombre</label>
-                <input type="text" name="nombre" value="{{$unidad_medida->nombre}}" class="form-control" >
+                <input type="text" value="{{$unidad_medida->nombre}}" class="form-control" readonly>
             </div>
             <!--Simbolo de la unidad de medida-->
             <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Simbolo</label>
-                <input type="text" name="simbolo" value="{{$unidad_medida->simbolo}}" class="form-control" >
+                <input type="text" value="{{$unidad_medida->simbolo}}" class="form-control" readonly>
             </div>
             <!--Magnitud de la unidad de medida-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Magnitud</label>
                 <input type="text" value="{{getNombreMagnitud($unidad_medida->magnitud_id)}}" class="form-control" readonly>
             </div>
-            <!--Boton Actualizar-->
-            <div class="col-2">
-                <label class="form-label" style="color: white;">........................</label>
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-            </div>
         </form>
+    </div>
+    <br>
+    <div style="border-style: outset;"></div>
+    <br>
+    <div>
+        <h5 style="text-align: center;">Materia Prima utilizando "{{$unidad_medida->nombre}}" como unidad de medida base</h5>
     </div>
 </div>
 

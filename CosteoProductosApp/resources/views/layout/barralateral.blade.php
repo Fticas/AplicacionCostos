@@ -11,21 +11,21 @@
                 Unidades de Medida
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="unidadesmedida">Ver Unidades</a></li>
-                <li><a class="dropdown-item" href="conversiones">Factores de Conversion</a></li>
+                <li><a class="dropdown-item" href="{{route('unidadesmedida.index')}}">Ver Unidades</a></li>
+                <li><a class="dropdown-item" href="{{route('conversiones.index')}}">Factores de Conversion</a></li>
             </ul>
         </li>
         <li>
-            <a href="materiasprimas" class="nav-link text-white" aria-current="page">Materia prima</a>
+            <a href="{{route('materiasprimas.index')}}" class="nav-link text-white">Materia prima</a>
         </li>
         <li>
-            <a href="productos" class="nav-link text-white" aria-current="page">Productos</a>
+            <a href="{{route('productos.index')}}" class="nav-link text-white" aria-current="page">Productos</a>
         </li>
         <li>
-            <a href="pedidos" class="nav-link text-white" aria-current="page">Pedidos</a>
+            <a href="{{route('pedidos.index')}}" class="nav-link text-white" aria-current="page">Pedidos</a>
         </li>
         <li>
-            <a href="compras" class="nav-link text-white" aria-current="page">Compras</a>
+            <a href="{{route('compras.index')}}" class="nav-link text-white" aria-current="page">Compras</a>
         </li>
         <!--
         <li>

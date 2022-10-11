@@ -7,12 +7,12 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="recetas">
+                        <a class="nav-link active" aria-current="page" href="/recetas">
                             <span class="navegacion">Receta</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="proveedores">
+                        <a class="nav-link active" aria-current="page" href="/proveedores">
                             <span class="navegacion">Proveedores</span>
                         </a>
                     </li>

@@ -7,6 +7,7 @@ include("funciones.php");
 use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
 use App\Models\Conversion;
+use App\Models\MAgnitud;
 
 class ConversionController extends Controller
 {
@@ -17,7 +18,10 @@ class ConversionController extends Controller
      */
     public function index()
     {
-        return view("conversiones.ver");
+        $conversiones = Conversion::All();
+        $magnitudes = Magnitud::All();
+        $magnitudes = $magnitudes->except(3);
+        return view("conversiones.ver", compact('magnitudes', 'conversiones'));
     }
 
     /**
@@ -27,14 +31,7 @@ class ConversionController extends Controller
      */
     public function create()
     {
-        $unidadmedida = UnidadMedida::All();
-        $tamanio = sizeof($unidadmedida);
-        if($tamanio > 1)
-        {
-            $um_referencia = $unidadmedida[$tamanio-1];
-            crearFactoresConversion($um_referencia);
-        }
-        return redirect()->route('crear_unidad_medida')->with('registro_creado', 'Unidad registrada exitosamente');
+        //
     }
 
     /**
@@ -68,7 +65,7 @@ class ConversionController extends Controller
     public function edit($id)
     {
         $conversion = Conversion::find($id);
-        return view("conversion.editar", compact("conversion"));
+        return view("conversiones.editar", compact("conversion"));
     }
 
     /**
@@ -82,8 +79,8 @@ class ConversionController extends Controller
     {
         $conversion = Conversion::find($id);
         $conversion->factor_conversion = $request->factor;
-        $conversion->update();
-        return redirect()->route("ver_conversion");
+        $conversion->save();
+        return redirect()->route("conversiones.index");
     }
 
     /**

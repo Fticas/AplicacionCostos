@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
 use App\Models\Magnitud;
 use App\Http\Controllers\ConversionController;
+use App\Http\Requests\StoreUnidadMedidaRequest;
 
 class UnidadMedidaController extends Controller
 {
@@ -18,7 +19,9 @@ class UnidadMedidaController extends Controller
      */
     public function index()
     {
-        return view('unidadesmedida.ver');
+        $magnitudes = Magnitud::All();
+        $unidades_medida = UnidadMedida::All();
+        return view('unidadesmedida.ver', compact("magnitudes", "unidades_medida"));
     }
 
     /**
@@ -28,36 +31,24 @@ class UnidadMedidaController extends Controller
      */
     public function create()
     {
-        /*$editable = false;
-        $unidadmedida = UnidadMedida::orderby('id','ASC')->paginate(5); //NUEVA LLAMADA
-        $magnitud = Magnitud::All();
-        return view("unidadmedida.crear", compact("editable", "unidadmedida", "magnitud"));*/
-        return "Vista de prueba";
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUnidadMedidaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUnidadMedidaRequest $request)
     {
-        //AGREGANDO VALIDACION
-         $request->validate([
-            'nombre'=>'required|String', 
-            
-            'simbolo'=> 'required|String']);
-         //AGREGANDO VALIDACION
-        $unidadmedida = new UnidadMedida();
-        $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
-        $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->id_magnitud = $magnitud->id;
-        $unidadmedida->simbolo = $request->simbolo;
-        $unidadmedida->save();
-        //SUSTITUYENDO RETORNO AGREGANDO ALERTA
-        return redirect()->route('crear_conversion')->with('registro_creado', 'Unidad registrada exitosamente');
-        //AGREGANDO ALERTA
+        $unidad_medida = new UnidadMedida;
+        $unidad_medida->magnitud_id = Magnitud::where('nombre', $request->magnitud)->first()->id;
+        $unidad_medida->nombre = $request->nombre;
+        $unidad_medida->simbolo = $request->simbolo;
+        $unidad_medida->save();
+        crearFactoresConversion($unidad_medida);
+        return redirect()->route('unidadesmedida.index');
     }
 
     /**
@@ -68,7 +59,8 @@ class UnidadMedidaController extends Controller
      */
     public function show($id)
     {
-        //
+        $unidad_medida = UnidadMedida::find($id);
+        return view('unidadesmedida.mostrar', compact('unidad_medida'));
     }
 
     /**
@@ -79,21 +71,21 @@ class UnidadMedidaController extends Controller
      */
     public function edit($id)
     {
-        $unidadmedida = UnidadMedida::find($id);
+        $unidad_medida = UnidadMedida::find($id);
         $magnitud = Magnitud::All();
-        return view('unidadmedida.editar', compact("unidadmedida", "magnitud"));
+        return view('unidadesmedida.editar', compact("unidad_medida", "magnitud"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUnidadMedidaRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUnidadMedidaRequest $request, $id)
     {
-        $unidadmedida = UnidadMedida::find($id);
+        /*$unidadmedida = UnidadMedida::find($id);
         $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
         $id_magnitud_anterior = $unidadmedida->id_magnitud;
         $unidadmedida->nombre = $request->nombre;
@@ -106,7 +98,12 @@ class UnidadMedidaController extends Controller
         }
         //AGREGANDO ALERTA
         return redirect()->route('ver_unidad_medida')->with('registro_actualizado', 'Unidad actualizada exitosamente');
-        //AGREGANDO ALERTA
+        //AGREGANDO ALERTA*/
+        $unidad_medida = UnidadMedida::find($id);
+        $unidad_medida->nombre = $request->nombre;
+        $unidad_medida->simbolo = $request->simbolo;
+        $unidad_medida->save();
+        return redirect()->route('unidadesmedida.show', $id);
     }
 
     /**
@@ -117,10 +114,6 @@ class UnidadMedidaController extends Controller
      */
     public function destroy($id)
     {
-        $unidadmedida = UnidadMedida::find($id);
-        $unidadmedida->delete();
-         //AGREGANDO ALERTA
-        return redirect()->route('ver_unidad_medida')->with('registro_borrado', 'Unidad eliminada exitosamente');
-        //AGREGANDO ALERTA
+        //
     }
 }
