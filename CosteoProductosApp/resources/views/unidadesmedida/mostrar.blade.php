@@ -31,7 +31,7 @@
             <!--Magnitud de la unidad de medida-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Magnitud</label>
-                <input type="text" value="{{getNombreMagnitud($unidad_medida->magnitud_id)}}" class="form-control" readonly>
+                <input type="text" value="{{$unidad_medida->magnitud->nombre}}" class="form-control" readonly>
             </div>
         </form>
     </div>
@@ -40,6 +40,7 @@
     <br>
     <div>
         <h5 style="text-align: center;">Materia Prima utilizando "{{$unidad_medida->nombre}}" como unidad de medida base</h5>
+        @include("layout.tablas.tablaunidadmedidaproductos")
     </div>
 </div>
 

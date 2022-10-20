@@ -10,4 +10,8 @@ class Magnitud extends Model
     use HasFactory;
 
     protected $table = 'magnitudes';
+
+    public function unidadesMedida(){
+        return $this->hasMany(UnidadMedida::class);
+    }
 }

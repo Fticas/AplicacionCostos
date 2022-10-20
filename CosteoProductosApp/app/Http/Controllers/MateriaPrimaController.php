@@ -18,7 +18,9 @@ class MateriaPrimaController extends Controller
      */
     public function index()
     {
-        return view('materiasprimas.ver');
+        $unidades_medida = UnidadMedida::all();
+        $materias_primas = MateriaPrima::all();
+        return view('materiasprimas.ver', compact('unidades_medida', 'materias_primas'));
     }
 
     /**
@@ -28,10 +30,7 @@ class MateriaPrimaController extends Controller
      */
     public function create()
     {
-        $editable = false;
-        $materiaprima = MateriaPrima::All();
-        $unidadmedida = UnidadMedida::All();
-        return view('materiasprimas.crear', compact("editable", "materiaprima", "unidadmedida"));
+        //
     }
 
     /**
@@ -43,13 +42,13 @@ class MateriaPrimaController extends Controller
     public function store(Request $request)
     {
         $materiaprima = new MateriaPrima();
-        $unidadmedida = UnidadMedida::where("nombre", $request->nombre_unidadmedida)->first();
+        $unidadmedida = UnidadMedida::where("nombre", $request->unidadmedida)->first();
+        $materiaprima->unidad_medida_id = $unidadmedida->id;
         $materiaprima->nombre = $request->nombre;
-        $materiaprima->unidades_existencia = 0;
-        $materiaprima->id_unidad_medida_base = $unidadmedida->id;
-        $materiaprima->precio_unitario = 0.00;
+        $materiaprima->cantidad_existencia = 0;
+        $materiaprima->costo_total = 0.00;
         $materiaprima->save();
-        return redirect()->route('crear_materia_prima');
+        return redirect()->route('materiasprimas.index');
     }
 
     /**
@@ -60,7 +59,8 @@ class MateriaPrimaController extends Controller
      */
     public function show($id)
     {
-        
+        $materia_prima = MateriaPrima::find($id);
+        return view('materiasprimas.mostrar', compact('materia_prima'));
     }
 
     /**
@@ -71,9 +71,8 @@ class MateriaPrimaController extends Controller
      */
     public function edit($id)
     {
-        $materiaprima = MateriaPrima::find($id);
-        $unidadmedida = UnidadMedida::All();
-        return view("materiasprimas.editar", compact("materiaprima", "unidadmedida"));
+        $materia_prima = MateriaPrima::find($id);
+        return view('materiasprimas.editar', compact('materia_prima'));
     }
 
     /**
@@ -86,17 +85,9 @@ class MateriaPrimaController extends Controller
     public function update(Request $request, $id)
     {
         $materiaprima = MateriaPrima::find($id);
-        $unidadmedida = UnidadMedida::where('nombre', $request->nombre_unidad_medida)->first();
         $materiaprima->nombre = $request->nombre;
-        if($materiaprima->id_unidad_medida_base != $unidadmedida->id)
-        {
-            $factor = obtenerFactorConversion($materiaprima->id_unidad_medida_base, $unidadmedida->id);
-            $materiaprima->precio_unitario /= $factor;
-            $materiaprima->unidades_existencia *= $factor;
-            $materiaprima->id_unidad_medida_base = $unidadmedida->id;
-        }
-        $materiaprima->update();
-        return redirect()->route('ver_materia_prima');
+        $materiaprima->save();
+        return redirect()->route('materiasprimas.show', $id);
     }
 
     /**
@@ -107,8 +98,6 @@ class MateriaPrimaController extends Controller
      */
     public function destroy($id)
     {
-        $materiaprima = MateriaPrima::find($id);
-        $materiaprima->delete();
-        return redirect()->route('ver_materia_prima');
+        //
     }
 }

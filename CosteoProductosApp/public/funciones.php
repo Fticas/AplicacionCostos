@@ -14,17 +14,17 @@
     function getNombreUnidadMedida($id){
         $unidadmedida = UnidadMedida::find($id);
         return $unidadmedida->nombre;
-    }//usado
+    }
 
     /**
      * Devuelve el nombre de la magnitud
      * @param $id: id de la unidad de medida
      * @return String
      */
-    function getNombreMagnitud($id){
+    /*function getNombreMagnitud($id){
         $magnitud = Magnitud::find($id);
         return $magnitud->nombre;
-    }//usado
+    }*/
 
     /**
      * Devuelve el nombre de la magnitud de la unidad de medida especificada

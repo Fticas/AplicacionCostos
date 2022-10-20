@@ -7,6 +7,7 @@ include("funciones.php");
 use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
 use App\Models\Magnitud;
+use App\Models\MateriaPrima;
 use App\Http\Controllers\ConversionController;
 use App\Http\Requests\StoreUnidadMedidaRequest;
 
@@ -60,7 +61,9 @@ class UnidadMedidaController extends Controller
     public function show($id)
     {
         $unidad_medida = UnidadMedida::find($id);
-        return view('unidadesmedida.mostrar', compact('unidad_medida'));
+        $magnitudes = Magnitud::all();
+        $materias_primas = MateriaPrima::All();
+        return view('unidadesmedida.mostrar', compact('unidad_medida', 'magnitudes', 'materias_primas'));
     }
 
     /**
@@ -72,8 +75,7 @@ class UnidadMedidaController extends Controller
     public function edit($id)
     {
         $unidad_medida = UnidadMedida::find($id);
-        $magnitud = Magnitud::All();
-        return view('unidadesmedida.editar', compact("unidad_medida", "magnitud"));
+        return view('unidadesmedida.editar', compact("unidad_medida"));
     }
 
     /**

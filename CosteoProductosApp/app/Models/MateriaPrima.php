@@ -10,4 +10,8 @@ class MateriaPrima extends Model
     use HasFactory;
 
     protected $table = 'materias_primas';
+
+    public function unidadMedida(){
+        return $this->belongsTo(UnidadMedida::class);
+    }
 }

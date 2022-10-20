@@ -36,7 +36,7 @@
             <!--Magnitud de la unidad de medida-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Magnitud</label>
-                <input type="text" value="{{getNombreMagnitud($unidad_medida->magnitud_id)}}" class="form-control" readonly>
+                <input type="text" value="{{$unidad_medida->magnitud->nombre}}" class="form-control" readonly>
             </div>
             <!--Boton Actualizar-->
             <div class="col-2">

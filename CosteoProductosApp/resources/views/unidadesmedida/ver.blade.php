@@ -27,13 +27,13 @@
                 <td>
                     <a href="{{route('unidadesmedida.show', $unidad_medida->id)}}" class="btn btn-primary btn-sm shadow-none"
                         data-toggle="tooltip" data-placement="top"
-                        title="Ver Registro para {{$unidad_medida->nombre}}">
+                        title="Ver registro de {{$unidad_medida->nombre}}">
                         <i class="fa fa-book fa-fw text-white"></i>
                     </a>
                 </td>
                 <td>{{$unidad_medida->nombre}}</td>
                 <td>{{$unidad_medida->simbolo}}</td>
-                <td>{{getNombreMagnitud($unidad_medida->magnitud_id)}}</td>
+                <td>{{$unidad_medida->magnitud->nombre}}</td>
             </tr>
             @endforeach
         </tbody>

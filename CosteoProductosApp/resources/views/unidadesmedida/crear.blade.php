@@ -6,7 +6,7 @@
 </p>
 <div class="collapse" id="collapseExample">
     <div class="card" style="background-color: #F4F6F6;">
-        <form action="{{url('/unidadesmedida')}}" method="post" class="row g-3" style="padding: 25px;">
+        <form action="{{route('unidadesmedida.store')}}" method="post" class="row g-3" style="padding: 25px;">
             @csrf
             <input type="hidden" name=_token value='{{csrf_token()}}'>
             <!--Encabezado del formulario-->
