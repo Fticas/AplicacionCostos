@@ -11,19 +11,19 @@
         </div>
     </div>
     <!--Formulario de recetas-->
-    <form action="{{route('recetas.update', $receta->id)}}" method="post" style="padding: 25px;">
+    <form action="{{route('recetas.store')}}" method="post" style="padding: 25px;">
         @csrf
-        @method('put')
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        
         
         <!--Encabezado del formulario-->
         <figcaption>
-            <h5 style="text-align: center;">Edite los campos que desea modificar</h5>
+            <h5 style="text-align: center;">Ingrese los datos de la receta</h5>
         </figcaption>
         <!--Nombre de la receta-->
         <div class="col-md-10">
             <label for="" class="form-label">Nombre de la receta</label>
-            <input type="text" name="nombre" value="{{$receta->nombre}}" class="form-control" id="">
+            <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control" id="">
             @error('nombre')
                 <small style="color: red">{{$message}}</small>
             @enderror
@@ -31,7 +31,7 @@
         <!--Descripcion de la receta-->
         <div class="col-10">
             <label for="" class="form-label">Descripcion de la receta</label>
-            <textarea name="descripcion" class="form-control" rows="5">{{$receta->descripcion}}</textarea>
+            <textarea name="descripcion" class="form-control" rows="5">{{old('descripcion')}}</textarea>
             @error('descripcion')
                 <small style="color: red">{{$message}}</small>
             @enderror
@@ -39,12 +39,12 @@
         <br>
         <!--Boton crear receta-->
         <div class="col-md-4">
-            <input type="submit" value="Actualizar receta" class="btn btn-primary">
+            <input type="submit" value="Crear receta nueva" class="btn btn-primary">
         </div>
     </form>
     <div style="border-style: outset;"></div>
     @php
-        $nuevos_insumos = false;
+        $nuevos_insumos = true;
         $editable = true;
     @endphp
     @include('recetasmateriasprimas.crear')

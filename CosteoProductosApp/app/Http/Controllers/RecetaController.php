@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 include("funciones.php");
 
-use Illuminate\Http\Request;
 use App\Models\MateriaPrima;
 use App\Models\UnidadMedida;
 use App\Models\Receta;
-use App\Models\Producto;
+use App\Models\RecetaMateriaPrima;
+use App\Http\Requests\StoreRecetaRequest;
 
 class RecetaController extends Controller
 {
@@ -20,7 +20,8 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        return view('recetas.ver');
+        $recetas = Receta::all();
+        return view('recetas.ver', compact('recetas'));
     }
 
     /**
@@ -30,28 +31,37 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        //
+        $materiasprimas = MateriaPrima::all();
+        $unidadesmedida = UnidadMedida::all();
+        $recetasmateriasprimas = RecetaMateriaPrima::where('asignado', false)->get();
+        return view('recetas.crear', compact('materiasprimas', 'unidadesmedida', 'recetasmateriasprimas'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreRecetaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRecetaRequest $request)
     {
-        /*
-        $materiaprima = MateriaPrima::where('nombre', $request->nombre_materia_prima)->first();
-        $unidadmedida = UnidadMedida::where('nombre', $request->nombre_unidad_medida)->first();
+        //Crear un registro en la tabla recetas
         $receta = new Receta();
-        $receta->id_producto = $request->id_producto;
-        $receta->id_materia_prima = $materiaprima->id;
-        $receta->cantidad = $request->cantidad;
-        $receta->id_unidad_medida = $unidadmedida->id;
+        $receta->nombre = $request->nombre;
+        $receta->descripcion = $request->descripcion;
+        $receta->asignado = false;
         $receta->save();
-        $producto = Producto::find($request->id_producto);
-        return redirect()->route('mostrar_producto', $producto);*/
+
+        //Obtener los registros de la tabla receta_materias_primas que no tengan una receta asignada
+        $registros_receta_materias_primas = RecetaMateriaPrima::where('asignado', false)->get();
+
+        //Se asocia la receta con cada registro en la tabla receta_materias_primas
+        foreach ($registros_receta_materias_primas as $receta_materia_prima) {
+            $receta_materia_prima->receta_id = $receta->id;
+            $receta_materia_prima->asignado = true;
+            $receta_materia_prima->save();
+        }
+        return redirect()->route('recetas.index');
     }
 
     /**
@@ -62,7 +72,9 @@ class RecetaController extends Controller
      */
     public function show($id)
     {
-        //
+        $receta = Receta::find($id);
+        $recetasmateriasprimas = RecetaMateriaPrima::where('receta_id', $id)->get();
+        return view("recetas.mostrar", compact('receta', 'recetasmateriasprimas'));
     }
 
     /**
@@ -73,29 +85,27 @@ class RecetaController extends Controller
      */
     public function edit($id)
     {
-        /*
         $receta = Receta::find($id);
-        $materiaprima = MateriaPrima::All();
-        $unidadmedida = UnidadMedida::All();
-        return view('receta.editar', compact("receta", "materiaprima", "unidadmedida"));*/
+        $materiasprimas = MateriaPrima::all();
+        $unidadesmedida = UnidadMedida::all();
+        $recetasmateriasprimas = RecetaMateriaPrima::where('receta_id', $id)->get();
+        return view("recetas.editar", compact('receta', 'materiasprimas', 'unidadesmedida', 'recetasmateriasprimas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreRecetaRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRecetaRequest $request, $id)
     {
-        /*
-        $receta = Receta::find($id);
-        $unidadmedida = UnidadMedida::where('nombre', $request->nombre_unidad_medida)->first();
-        $receta->cantidad = $request->cantidad;
-        $receta->id_unidad_medida = $unidadmedida->id;
-        $receta->update();
-        return redirect()->route('ver_receta', $receta->id_producto);*/
+        $receta = Receta::find($id)->first();
+        $receta->nombre = $request->nombre;
+        $receta->descripcion = $request->descripcion;
+        $receta->save();
+        return redirect()->route('recetas.index', $id);
     }
 
     /**
@@ -106,8 +116,6 @@ class RecetaController extends Controller
      */
     public function destroy($id)
     {
-        $receta = Receta::find($id);
-        $receta->delete();
-        return redirect()->route('ver_receta', $receta->id_producto);
+        //
     }
 }

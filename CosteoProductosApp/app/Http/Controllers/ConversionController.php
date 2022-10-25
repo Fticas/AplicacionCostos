@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
 use App\Models\Conversion;
 use App\Models\MAgnitud;
+use App\Http\Requests\StoreConversionRequest;
 
 class ConversionController extends Controller
 {
@@ -71,11 +72,11 @@ class ConversionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreConversionRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreConversionRequest $request, $id)
     {
         $conversion = Conversion::find($id);
         $conversion->factor_conversion = $request->factor;

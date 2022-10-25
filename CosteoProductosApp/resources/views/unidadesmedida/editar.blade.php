@@ -27,11 +27,18 @@
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Nombre</label>
                 <input type="text" name="nombre" value="{{$unidad_medida->nombre}}" class="form-control" >
+                @error('nombre')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
             </div>
+            
             <!--Simbolo de la unidad de medida-->
             <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Simbolo</label>
                 <input type="text" name="simbolo" value="{{$unidad_medida->simbolo}}" class="form-control" >
+                @error('simbolo')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
             </div>
             <!--Magnitud de la unidad de medida-->
             <div class="col-md-3">

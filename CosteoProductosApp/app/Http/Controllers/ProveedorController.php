@@ -24,9 +24,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        $editable = false;
-        $proveedores = Proveedor::All();
-        return view('proveedor.crear', compact("proveedores", "editable"));
+        //
     }
 
     /**
@@ -37,11 +35,7 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        $proveedor = new Proveedor();
-        $proveedor->nombre = $request->nombre;
-        $proveedor->descripcion = $request->descripcion;
-        $proveedor->save();
-        return redirect()->route('crear_proveedor');
+        //
     }
 
     /**
@@ -63,8 +57,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        $proveedor = Proveedor::find($id);
-        return view('proveedor.editar', compact("proveedor"));
+        //
     }
 
     /**
@@ -76,11 +69,7 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $proveedor = Proveedor::find($id);
-        $proveedor->nombre = $request->nombre;
-        $proveedor->descripcion = $request->descripcion;
-        $proveedor->update();
-        return redirect()->route('ver_proveedor');
+        //
     }
 
     /**
@@ -91,8 +80,6 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        $proveedor = Proveedor::find($id);
-        $proveedor->delete();
-        return redirect()->route('ver_proveedor');
+        //
     }
 }

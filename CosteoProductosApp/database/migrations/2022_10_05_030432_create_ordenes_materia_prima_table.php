@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('ordenes_materia_prima', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('receta_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('receta_id')->constrained()->onUpdate('cascade')->nullable(true);
             $table->foreignId('materia_prima_id')->constrained('materias_primas')->onUpdate('cascade');
-            $table->integer('cantidad');
+            $table->decimal('cantidad', 22, 10);
             $table->foreignId('unidad_medida_id')->constrained('unidades_medida')->onUpdate('cascade');
             $table->timestamps();
         });

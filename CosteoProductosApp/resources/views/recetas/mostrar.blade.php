@@ -11,43 +11,30 @@
         </div>
     </div>
     <!--Formulario de recetas-->
-    <form action="{{route('recetas.update', $receta->id)}}" method="post" style="padding: 25px;">
+    <form action="{{route('recetas.store')}}" method="post" style="padding: 25px;">
         @csrf
-        @method('put')
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         
         <!--Encabezado del formulario-->
         <figcaption>
-            <h5 style="text-align: center;">Edite los campos que desea modificar</h5>
+            <h5 style="text-align: center;">{{$receta->nombre}}</h5>
         </figcaption>
-        <!--Nombre de la receta-->
-        <div class="col-md-10">
-            <label for="" class="form-label">Nombre de la receta</label>
-            <input type="text" name="nombre" value="{{$receta->nombre}}" class="form-control" id="">
-            @error('nombre')
-                <small style="color: red">{{$message}}</small>
-            @enderror
-        </div>
         <!--Descripcion de la receta-->
-        <div class="col-10">
-            <label for="" class="form-label">Descripcion de la receta</label>
-            <textarea name="descripcion" class="form-control" rows="5">{{$receta->descripcion}}</textarea>
+        <div class="col-12">
+            <textarea name="descripcion" class="form-control" rows="5" readonly>{{$receta->descripcion}}</textarea>
             @error('descripcion')
                 <small style="color: red">{{$message}}</small>
             @enderror
         </div>
         <br>
-        <!--Boton crear receta-->
-        <div class="col-md-4">
-            <input type="submit" value="Actualizar receta" class="btn btn-primary">
-        </div>
     </form>
     <div style="border-style: outset;"></div>
     @php
         $nuevos_insumos = false;
-        $editable = true;
+        $editable = false;
     @endphp
-    @include('recetasmateriasprimas.crear')
+    <br>
+    <p style="text-align: center;"><strong>Lista de materia prima</strong></p>
     @include('recetasmateriasprimas.ver')
 </div>
 

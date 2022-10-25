@@ -27,6 +27,9 @@
             <div class="col-md-4">
                 <label for="inputPassword4" class="form-label">Nombre</label>
                 <input type="text" name="nombre" value="{{$materia_prima->nombre}}" class="form-control" >
+                @error('nombre')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
             </div>
             <!--Cantidad en existencia de la materia prima-->
             <div class="col-md-3">

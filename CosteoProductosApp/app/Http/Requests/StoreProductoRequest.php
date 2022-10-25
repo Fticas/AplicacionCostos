@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUnidadMedidaRequest extends FormRequest
+class StoreProductoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StoreUnidadMedidaRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'simbolo' => 'required'
+            'descripcion' => 'required'
         ];
     }
 
@@ -36,8 +36,8 @@ class StoreUnidadMedidaRequest extends FormRequest
      */
     public function messages(){
         return [
-            'nombre.required' => '* El nombre es obligatorio',
-            'simbolo.required' => '* El simbolo es obligatorio'
+            'nombre.required' => '* El nombre del producto es obligatorio',
+            'descripcion.required' => '* La descripcion del producto es obligatorio'
         ];
     }
 }

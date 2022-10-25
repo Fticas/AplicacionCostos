@@ -26,17 +26,20 @@
             <!--Nombre de la unidad de medida inicial-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Unidad de medida inicial</label>
-                <input type="text" value="{{getNombreUnidadMedida($conversion->unidad_medida_inicial_id)}}" class="form-control" readonly>
+                <input type="text" value="{{$conversion->unidad_medida_inicial->nombre}}" class="form-control" readonly>
             </div>
             <!--Nombre de la unidad de medida final-->
             <div class="col-md-3">
                 <label for="inputPassword4" class="form-label">Unidad de medida final</label>
-                <input type="text" value="{{getNombreUnidadMedida($conversion->unidad_medida_final_id)}}" class="form-control" readonly>
+                <input type="text" value="{{$conversion->unidad_medida_final->nombre}}" class="form-control" readonly>
             </div>
             <!--Factor de conversion-->
             <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Factor de conversion</label>
                 <input type="text" name="factor" value="{{$conversion->factor_conversion}}" class="form-control" >
+                @error('factor')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
             </div>
             <!--Boton Actualizar-->
             <div class="col-2">

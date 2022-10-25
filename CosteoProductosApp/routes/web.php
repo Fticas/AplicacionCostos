@@ -22,8 +22,12 @@ Route::get('/', function(){
 Route::resource('unidadesmedida', UnidadMedidaController::class);
 Route::resource('conversiones', ConversionController::class);
 Route::resource('materiasprimas', MateriaPrimaController::class);
+Route::resource('recetas', RecetaController::class);
+Route::resource('recetasmateriasprimas', RecetaMateriaPrimaController::class);
 Route::resource('productos', ProductoController::class);
+
+
+
 Route::resource('pedidos', PedidoController::class);
 Route::resource('compras', CompraController::class);
-Route::resource('recetas', RecetaController::class);
 Route::resource('proveedores', ProveedorController::class);

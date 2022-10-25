@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\MateriaPrima;
 use App\Models\UnidadMedida;
 use App\Models\Conversion;
+use App\Http\Requests\StoreMateriaPrimaRequest;
 
 class MateriaPrimaController extends Controller
 {
@@ -36,10 +37,10 @@ class MateriaPrimaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMateriaPrimaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMateriaPrimaRequest $request)
     {
         $materiaprima = new MateriaPrima();
         $unidadmedida = UnidadMedida::where("nombre", $request->unidadmedida)->first();
@@ -78,11 +79,11 @@ class MateriaPrimaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMateriaPrimaRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreMateriaPrimaRequest $request, $id)
     {
         $materiaprima = MateriaPrima::find($id);
         $materiaprima->nombre = $request->nombre;

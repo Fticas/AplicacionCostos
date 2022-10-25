@@ -87,20 +87,6 @@ class UnidadMedidaController extends Controller
      */
     public function update(StoreUnidadMedidaRequest $request, $id)
     {
-        /*$unidadmedida = UnidadMedida::find($id);
-        $magnitud = Magnitud::where("nombre", $request->nombre_magnitud)->first();
-        $id_magnitud_anterior = $unidadmedida->id_magnitud;
-        $unidadmedida->nombre = $request->nombre;
-        $unidadmedida->simbolo = $request->simbolo;
-        $unidadmedida->id_magnitud = $magnitud->id;
-        $unidadmedida->update();
-        if($id_magnitud_anterior != $magnitud->id){
-            eliminarFactoresConversion($unidadmedida);
-            crearFactoresConversion($unidadmedida);
-        }
-        //AGREGANDO ALERTA
-        return redirect()->route('ver_unidad_medida')->with('registro_actualizado', 'Unidad actualizada exitosamente');
-        //AGREGANDO ALERTA*/
         $unidad_medida = UnidadMedida::find($id);
         $unidad_medida->nombre = $request->nombre;
         $unidad_medida->simbolo = $request->simbolo;

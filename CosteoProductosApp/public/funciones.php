@@ -7,57 +7,6 @@
     use App\Models\Proveedor;
 
     /**
-     * Devuelve el nombre de la unidad de medida
-     * @param $id: id de la unidad de medida
-     * @return String
-     */
-    function getNombreUnidadMedida($id){
-        $unidadmedida = UnidadMedida::find($id);
-        return $unidadmedida->nombre;
-    }
-
-    /**
-     * Devuelve el nombre de la magnitud
-     * @param $id: id de la unidad de medida
-     * @return String
-     */
-    /*function getNombreMagnitud($id){
-        $magnitud = Magnitud::find($id);
-        return $magnitud->nombre;
-    }*/
-
-    /**
-     * Devuelve el nombre de la magnitud de la unidad de medida especificada
-     * @param $id: id de la unidad de medida
-     * @return String
-     */
-    function getNombreMagnitudUnidadMedida($id){
-        $unidadmedida = UnidadMedida::find($id);
-        $magnitud = Magnitud::find($unidadmedida->magnitud_id);
-        return $magnitud->nombre;
-    }//usado
-
-    /**
-     * Devuelve el nombre de la magnitud
-     * @param $id: id de la unidad de medida
-     * @return String
-     */
-    function getNombreMateriaPrima($id){
-        $materiaprima = MateriaPrima::find($id);
-        return $materiaprima->nombre;
-    }
-
-    /**
-     * Devuelve el nombre de la magnitud
-     * @param $id: id de la unidad de medida
-     * @return String
-     */
-    function getNombreProducto($id){
-        $producto = Producto::find($id);
-        return $producto->nombre;
-    }
-
-    /**
      * Crea instancias de la entidad conversion
      * @param $um_nueva: unidad de medida de referencia
      */
@@ -88,22 +37,7 @@
         $conversion->save();
     }//usado
 
-    function numeroConversiones($conversiones, $magnitud){
-        $cantidad = 0;
 
-        foreach($conversiones as $conversion){
-            $unidadmedida = UnidadMedida::find($conversion->unidad_medida_inicial_id);
-            if($unidadmedida->magnitud_id == $magnitud->id){
-                $cantidad++;
-            }
-        }
-        return $cantidad;
-    }//usado
-
-    /**
-     * Crea instancias de la entidad conversion
-     * @param $unidadmedida_referencia: unidad de medida de referencia
-     */
     function eliminarFactoresConversion($um_referencia)
     {
         $conversion = Conversion::All();
@@ -116,24 +50,5 @@
                 $conv->delete();
             }
         }
-    }
-
-    function obtenerFactorConversion($inicial, $final)
-    {
-        $conversiones = Conversion::All();
-        foreach($conversiones as $conversion)
-        {
-            $condicion1 = $conversion->id_unidad_medida_inicial == $inicial;
-            $condicion2 = $conversion->id_unidad_medida_final == $final;
-            if($condicion1 && $condicion2)
-            {
-                return $conversion->factor_conversion;
-            }
-        }
-    }
-
-    function obtenerNombreProveedor($id){
-        $proveedor = Proveedor::find($id);
-        return $proveedor->nombre;
     }
 ?>

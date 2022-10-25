@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Receta;
+use App\Models\RecetaMateriaPrima;
+use App\Http\Requests\StoreProductoRequest;
 
 class ProductoController extends Controller
 {
@@ -14,7 +17,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('productos.ver');
+        $productos = Producto::all();
+        return view('productos.ver', compact('productos'));
     }
 
     /**
@@ -24,24 +28,31 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $editable = false;
-        $productos = Producto::All();
-        return view('producto.crear', compact("editable", "productos"));
+        $recetas = Receta::all();
+        $recetas = $recetas->reject(function($receta){
+            return $receta->asignado;
+        });
+        return view('productos.crear', compact('recetas'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreProductoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductoRequest $request)
     {
+        $receta = Receta::where('nombre', $request->receta)->first();
+        $receta->asignado = true;
+        $receta->save();
+
         $producto = new Producto();
+        $producto->receta_id = $receta->id;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
         $producto->save();
-        return redirect()->route('crear_producto');
+        return redirect()->route('productos.index');
     }
 
     /**
@@ -52,7 +63,9 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('ver_receta', $id);
+        $producto = Producto::find($id);
+        $recetasmateriasprimas = RecetaMateriaPrima::where('receta_id', $producto->receta_id)->get();
+        return view('productos.mostrar', compact('producto', 'recetasmateriasprimas'));
     }
 
     /**
@@ -64,23 +77,40 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::find($id);
-        return view('producto.editar', compact("producto"));
+        $recetas = Receta::all();
+        $recetas = $recetas->reject(function($receta){
+            return $receta->asignado;
+        });
+        return view('productos.editar', compact('producto', 'recetas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreProductoRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductoRequest $request, $id)
     {
         $producto = Producto::find($id);
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
-        $producto->update();
-        return redirect()->route('ver_producto');
+        if($producto->receta->nombre != $request->receta){
+            //Establecer el campo asignado de la receta actual en falso
+            $producto->receta->asignado = false;
+            $producto->receta->save();
+
+            //Establecer el campo asignado de la nueva receta a verdadero
+            $receta = Receta::where('nombre', $request->receta)->first();
+            $receta->asignado = true;
+            $receta->save();
+
+            //Asociar el producto con la receta
+            $producto->receta_id = $receta->id;
+        }
+        $producto->save();
+        return redirect()->route('productos.show', $producto->id);
     }
 
     /**
@@ -92,7 +122,9 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto = Producto::find($id);
+        $producto->receta->asignado = false;
+        $producto->receta->save();
         $producto->delete();
-        return redirect()->route('ver_producto');
+        return redirect()->route('productos.index');
     }
 }
