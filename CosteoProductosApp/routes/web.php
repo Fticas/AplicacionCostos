@@ -25,9 +25,10 @@ Route::resource('materiasprimas', MateriaPrimaController::class);
 Route::resource('recetas', RecetaController::class);
 Route::resource('recetasmateriasprimas', RecetaMateriaPrimaController::class);
 Route::resource('productos', ProductoController::class);
+Route::resource('proveedores', ProveedorController::class);
+Route::resource('operarios', OperarioController::class);
 
 
 
 Route::resource('pedidos', PedidoController::class);
 Route::resource('compras', CompraController::class);
-Route::resource('proveedores', ProveedorController::class);
