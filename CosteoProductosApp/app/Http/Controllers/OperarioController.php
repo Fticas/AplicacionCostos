@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Operario;
 
 class OperarioController extends Controller
 {
@@ -13,7 +14,8 @@ class OperarioController extends Controller
      */
     public function index()
     {
-        //
+        $operarios = Operario::All();
+        return view('operarios.ver', compact("operarios"));
     }
 
     /**
@@ -34,7 +36,13 @@ class OperarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $operarios = new Operario;
+        $operarios->nombre = $request->nombre;
+        $operarios->apellido = $request->apellido;
+        $operarios->carnet = $request->carnet;
+        $operarios->precio_hora = $request->precio_hora;
+        $operarios->save();
+        return redirect()->route('operarios.index');
     }
 
     /**
@@ -56,7 +64,8 @@ class OperarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operarios = Operario::find($id);
+        return view('operarios.editar', compact("operarios"));
     }
 
     /**
@@ -68,7 +77,13 @@ class OperarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $operario = Operario::find($id);
+        $operario->nombre = $request->nombre;
+        $operario->apellido = $request->apellido;
+        $operario->carnet = $request->carnet;
+        $operario->precio_hora = $request->precio_hora;
+        $operario->save();
+        return redirect()->route('operarios.index');
     }
 
     /**

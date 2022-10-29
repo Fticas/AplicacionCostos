@@ -1,12 +1,12 @@
 
 <p>
     <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Ingresar nuevo Proveedor
+        Ingresar nuevo Operario
     </a>
 </p>
 <div class="collapse" id="collapseExample">
     <div class="card" style="background-color: #F4F6F6;">
-        <form action="{{route('proveedores.store')}}" method="post" class="row g-3" style="padding: 25px;">
+        <form action="{{route('operarios.store')}}" method="post" class="row g-3" style="padding: 25px;">
             @csrf
             <input type="hidden" name=_token value='{{csrf_token()}}'>
             <!--Encabezado del formulario-->
@@ -15,18 +15,33 @@
             </div>
             <!--Nombre de la unidad de medida-->
             <div class="col-md-2">
-                <label for="nombre" class="form-label">Nombre del proveedor</label>
+                <label for="nombre" class="form-label">Nombre del operario</label>
                 <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control" >
                 @error('nombre')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
+
+            <div class="col-md-2">
+                <label for="apellido" class="form-label">Apellido del operario</label>
+                <input type="text" name="apellido" value="{{old('apellido')}}" class="form-control" >
+                @error('apellido')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
+            </div>
             
+            <div class="col-md-2">
+                <label for="carnet" class="form-label">Carnet del operario</label>
+                <input type="text" name="carnet" value="{{old('carnet')}}" class="form-control" >
+                @error('carnet')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
+            </div>
             
             <div class="col-6">
-                <label for="descripcion" class="form-label">Descripcion</label>
-                <input type="text" name="descripcion" value="{{old('descripcion')}}" class="form-control" >
-                @error('descripcion')
+                <label for="precio_hora" class="form-label">Precio por hora: </label>
+                <input type="text" name="precio_hora" value="{{old('precio_hora')}}" class="form-control" >
+                @error('precio_hora')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>

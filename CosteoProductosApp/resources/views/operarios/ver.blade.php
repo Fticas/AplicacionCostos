@@ -3,45 +3,49 @@
 @section('contenido')
 
 <div style="padding: 20px;">
-    @include('proveedores.crear')
+    @include('operarios.crear')
 
     <br>
     <!--tabla de unidades de medida-->
     <table class="table table-bordered">
-        <h3 style="text-align: center;">Lista de proveedores</h3>
+        <h3 style="text-align: center;">Lista de operarios</h3>
         <div style="border-style: outset;"></div>
         <br>
 
-        @if(count($proveedores))
+        @if(count($operarios))
         <thead class="table-primary">
             <tr style="text-align: center;">
                 <th>Acciones</th>
                 <th>Nombre</th>
-                <th>Descripcion</th>
+                <th>Nombre</th>
+                <th>Carnet</th>
+                <th>Pago por hora</th>
             </tr>
         </thead>
         <tbody style="text-align: center;">
-            @foreach($proveedores as $proveedor)
+            @foreach($operarios as $operario)
             <tr>
                 <td>
-                    <a href="{{route('proveedores.edit', $proveedor->id)}}" class="btn btn-success btn-sm shadow-none"
+                    <a href="{{route('operarios.edit', $operario->id)}}" class="btn btn-success btn-sm shadow-none"
                         data-toggle="tooltip" data-placement="top"
-                        title="Editar informacion: {{$proveedor->nombre}}">
+                        title="Editar informacion: {{$operario->nombre}}">
                         <i class="fa fa-book fa-fw text-white"></i>
                     </a>
-                    <a href="{{route('proveedores.edit', $proveedor->id)}}" class="btn btn-danger btn-sm shadow-none"
+                    <a href="{{route('operarios.edit', $operario->id)}}" class="btn btn-danger btn-sm shadow-none"
                         data-toggle="tooltip" data-placement="top"
-                        title="Eliminar registro: {{$proveedor->nombre}}">
+                        title="Eliminar registro: {{$operario->nombre}}">
                         <i class="fa fa-book fa-fw text-white"></i>
                     </a>
                 </td>
-                <td>{{$proveedor->nombre}}</td>
-                <td>{{$proveedor->descripcion}}</td>
+                <td>{{$operario->nombre}}</td>
+                <td>{{$operario->apellido}}</td>
+                <td>{{$operario->carnet}}</td>
+                <td>{{$operario->precio_hora}}</td>
             </tr>
             @endforeach
         </tbody>
         @else
-        <p style="text-align: center">No hay proveedores listados</p>
+        <p style="text-align: center">No hay operarios listados</p>
         @endif
 
     </table>

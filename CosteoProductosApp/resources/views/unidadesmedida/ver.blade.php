@@ -7,7 +7,7 @@
     <br>
 
     <!--tabla de unidades de medida-->
-    <table class="table table-bordered"`>
+    <table class="table table-bordered">
         <h3 style="text-align: center;">Unidades de medida</h3>
         <div style="border-style: outset;"></div>
         <br>

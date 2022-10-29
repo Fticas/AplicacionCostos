@@ -4,12 +4,12 @@
 
 <div style="padding: 20px;">
     <div class="pull-right"style="background:transparent;">
-        <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('proveedores.index', $proveedores->id)}}" style="margin-top: 10px;margin-bottom: 10px;"> 
+        <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('operarios.index', $operarios->id)}}" style="margin-top: 10px;margin-bottom: 10px;"> 
             <i class="fa fa-arrow-left" aria-hidden="true"> Regresar</i>
         </a>
     </div>
     <div class="card" style="background-color: #F4F6F6;">
-        <form action="{{route('proveedores.update', $proveedores)}}" method="POST" class="row g-3" style="padding: 25px;">
+        <form action="{{route('operarios.update', $operarios)}}" method="POST" class="row g-3" style="padding: 25px;">
             @csrf
             @method('put')
             <input type="hidden" name=_token value='{{csrf_token()}}'>
@@ -21,7 +21,7 @@
 
             <div class="col-md-6">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" name="nombre" value="{{$proveedores->nombre}}" class="form-control" >
+                <input type="text" name="nombre" value="{{$operarios->nombre}}" class="form-control" >
                 @error('nombre')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
@@ -29,9 +29,25 @@
             
             
             <div class="col-md-2">
-                <label for="descripcion" class="form-label">descripcion</label>
-                <input type="text" name="descripcion" value="{{$proveedores->descripcion}}" class="form-control" >
-                @error('descripcion')
+                <label for="apellido" class="form-label">carnet</label>
+                <input type="text" name="apellido" value="{{$operarios->apellido}}" class="form-control" >
+                @error('apellido')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
+            </div>
+
+            <div class="col-md-2">
+                <label for="carnet" class="form-label">carnet</label>
+                <input type="text" name="carnet" value="{{$operarios->carnet}}" class="form-control" >
+                @error('carnet')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
+            </div>
+
+            <div class="col-md-2">
+                <label for="precio_hora" class="form-label">precio_hora</label>
+                <input type="text" name="precio_hora" value="{{$operarios->precio_hora}}" class="form-control" >
+                @error('precio_hora')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>

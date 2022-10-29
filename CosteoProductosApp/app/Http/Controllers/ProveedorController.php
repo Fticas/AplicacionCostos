@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
 
+
 class ProveedorController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        return view('proveedores.ver');
+        $proveedores = Proveedor::All();
+        return view('proveedores.ver', compact("proveedores"));
     }
 
     /**
@@ -35,7 +37,11 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedores = new Proveedor;
+        $proveedores->nombre = $request->nombre;
+        $proveedores->descripcion = $request->descripcion;
+        $proveedores->save();
+        return redirect()->route('proveedores.index');
     }
 
     /**
@@ -57,7 +63,8 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proveedores = Proveedor::find($id);
+        return view('proveedores.editar', compact("proveedores"));
     }
 
     /**
@@ -69,7 +76,11 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+        $proveedor->nombre = $request->nombre;
+        $proveedor->descripcion = $request->descripcion;
+        $proveedor->save();
+        return redirect()->route('proveedores.index');
     }
 
     /**

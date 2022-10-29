@@ -12,7 +12,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/proveedores">
+                        <a class="nav-link active" aria-current="page" href="{{route('proveedores.index')}}">
                             <span class="navegacion">Proveedores</span>
                         </a>
                     </li>
@@ -23,7 +23,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Costos de Operacion</a></li>
                             <li><a class="dropdown-item" href="#">Costos directos</a></li>
-                            <li><a class="dropdown-item" href="#">Operarios</a></li>            
+                            <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>            
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
