@@ -17,6 +17,7 @@
             <tr style="text-align: center;">
                 <th>Acciones</th>
                 <th>Nombre</th>
+                <th>Tipo de Proveedor</th>
                 <th>Descripcion</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                     </a>
                 </td>
                 <td>{{$proveedor->nombre}}</td>
+                <td>{{$proveedor->tipo_proveedor}}
                 <td>{{$proveedor->descripcion}}</td>
             </tr>
             @endforeach

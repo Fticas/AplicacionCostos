@@ -40,7 +40,7 @@
                 <td>{{$operario->nombre}}</td>
                 <td>{{$operario->apellido}}</td>
                 <td>{{$operario->carnet}}</td>
-                <td>{{$operario->precio_hora}}</td>
+                <td>${{number_format($operario->precio_hora, 2)}}</td>
             </tr>
             @endforeach
         </tbody>

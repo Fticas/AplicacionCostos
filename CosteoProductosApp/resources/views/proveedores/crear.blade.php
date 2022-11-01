@@ -22,6 +22,18 @@
                 @enderror
             </div>
             
+            <div class="col-2">
+                <label for="tipo_proveedor" class="form-label">Seleccionar tipo de proveedor: </label>
+                <select name="tipo_proveedor" id="cars" class="form-select"> 
+                    <option value ="" >Seleccione un proveedor</option>
+                    <option value="Proveedor de equipo">Proveedor de Equipos</option> 
+                    <option value="Proveedor de materia prima">Proveedor de Materia Prima</option>
+                    <option value="Proveedor de materia prima y equipo">Proveedor de Materia Prima y equipos</option>
+                </select>
+                @error('tipo_proveedor')
+                    <small style="color: red;">{{$message}}</small>
+                @enderror
+            </div>
             
             <div class="col-6">
                 <label for="descripcion" class="form-label">Descripcion</label>
@@ -30,6 +42,8 @@
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
+
+            
 
             <!--Boton enviar-->
             <div class="col-2">

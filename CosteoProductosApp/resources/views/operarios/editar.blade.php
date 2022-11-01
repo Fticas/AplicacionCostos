@@ -19,7 +19,7 @@
                 <br>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" name="nombre" value="{{$operarios->nombre}}" class="form-control" >
                 @error('nombre')
@@ -29,7 +29,7 @@
             
             
             <div class="col-md-2">
-                <label for="apellido" class="form-label">carnet</label>
+                <label for="apellido" class="form-label">Apellido</label>
                 <input type="text" name="apellido" value="{{$operarios->apellido}}" class="form-control" >
                 @error('apellido')
                     <small style="color: red;">{{$message}}</small>
@@ -45,8 +45,8 @@
             </div>
 
             <div class="col-md-2">
-                <label for="precio_hora" class="form-label">precio_hora</label>
-                <input type="text" name="precio_hora" value="{{$operarios->precio_hora}}" class="form-control" >
+                <label for="precio_hora" class="form-label">Pago por hora</label>
+                <input type="text" name="precio_hora" value="{{number_format($operarios->precio_hora, 2)}}" class="form-control" >
                 @error('precio_hora')
                     <small style="color: red;">{{$message}}</small>
                 @enderror

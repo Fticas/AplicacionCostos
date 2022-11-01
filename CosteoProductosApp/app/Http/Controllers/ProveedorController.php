@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
-
+use App\Http\Requests\StoreProveedoresRequest;
 
 class ProveedorController extends Controller
 {
@@ -35,11 +35,12 @@ class ProveedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProveedoresRequest $request)
     {
         $proveedores = new Proveedor;
         $proveedores->nombre = $request->nombre;
         $proveedores->descripcion = $request->descripcion;
+        $proveedores->tipo_proveedor = $request->tipo_proveedor;
         $proveedores->save();
         return redirect()->route('proveedores.index');
     }
@@ -74,11 +75,12 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProveedoresRequest $request, $id)
     {
         $proveedor = Proveedor::find($id);
         $proveedor->nombre = $request->nombre;
         $proveedor->descripcion = $request->descripcion;
+        $proveedor->tipo_proveedor = $request->tipo_proveedor;
         $proveedor->save();
         return redirect()->route('proveedores.index');
     }
