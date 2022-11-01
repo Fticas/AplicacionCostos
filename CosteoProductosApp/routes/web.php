@@ -29,6 +29,5 @@ Route::resource('proveedores', ProveedorController::class);
 Route::resource('operarios', OperarioController::class);
 
 
-
 Route::resource('pedidos', PedidoController::class);
 Route::resource('compras', CompraController::class);

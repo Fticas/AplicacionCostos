@@ -25,10 +25,9 @@ class StoreOperarioRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'apellido' => 'required'
-            'carnet' => 'required'
-            'precio_hora' => 'required'
-
+            'apellido' => 'required',
+            'carnet' => 'required',
+            'precio_hora' => 'required',
         ];
     }
 

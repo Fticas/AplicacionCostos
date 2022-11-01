@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 30);
+            $table->string('tipo_proveedor',25);
             $table->string('descripcion', 100);
-            $table->string('tipo_proveedor',50);
             $table->timestamps();
         });
     }

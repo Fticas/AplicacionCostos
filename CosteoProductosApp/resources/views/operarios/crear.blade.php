@@ -13,23 +13,23 @@
             <div>
                 <h5 style="text-align: center;">Ingresar datos:</h5>
             </div>
-            <!--Nombre de la unidad de medida-->
-            <div class="col-md-2">
+            <!--Nombre del operario-->
+            <div class="col-md-3">
                 <label for="nombre" class="form-label">Nombre del operario</label>
                 <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control" >
                 @error('nombre')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-
-            <div class="col-md-2">
+            <!--Apellido del operario-->
+            <div class="col-md-3">
                 <label for="apellido" class="form-label">Apellido del operario</label>
                 <input type="text" name="apellido" value="{{old('apellido')}}" class="form-control" >
                 @error('apellido')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-            
+            <!--Carnet-->
             <div class="col-md-2">
                 <label for="carnet" class="form-label">Carnet del operario</label>
                 <input type="text" name="carnet" value="{{old('carnet')}}" class="form-control" >
@@ -37,15 +37,14 @@
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-            
-            <div class="col-6">
+            <!--Precio por hora-->
+            <div class="col-2">
                 <label for="precio_hora" class="form-label">Precio por hora: </label>
                 <input type="text" name="precio_hora" value="{{old('precio_hora')}}" class="form-control" >
                 @error('precio_hora')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-
             <!--Boton enviar-->
             <div class="col-2">
                 <label class="form-label" style="color: white;">........................</label>
