@@ -18,41 +18,53 @@
                 <h5 style="text-align: center;">Edite los campos que desea modificar</h5>
                 <br>
             </div>
-
-            <div class="col-md-2">
+            <!--Nombre del proveedor-->
+            <div class="col-md-5">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" name="nombre" value="{{$proveedores->nombre}}" class="form-control" >
                 @error('nombre')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-
-            <div class="col-md-2">
+            <!--Tipo de proveedor-->
+            <div class="col-md-5">
                 <label for="tipo_proveedor" class="form-label">Seleccionar tipo de proveedor: </label>
                 <select name="tipo_proveedor" id="cars" class="form-select"> <!-- if para que deje como selected el texto correspondiente. -->
-                    <option value ="" >Seleccione un proveedor</option>
-                    <option value="Proveedor de equipo">Proveedor de Equipos</option>
-                    <option value="Proveedor de materia prima">Proveedor de Materia Prima</option>
-                    <option value="Proveedor de materia prima y equipo">Proveedor de Materia Prima y equipos</option>
+                    <option>{{$proveedores->tipo_proveedor}}</option>
+                    @switch($proveedores->tipo_proveedor)
+                        @case('Equipos')
+                        <option>Materias Primas</option>
+                        <option>Equipos y Materias Primas</option>
+                        @break
+                        @case('Materias Primas')
+                        <option>Equipos</option>
+                        <option>Equipos y Materias Primas</option>
+                        @break
+                        @case('Equipos y Materias Primas')
+                        <option>Equipos</option>
+                        <option>Materias Primas</option>
+                        @break
+                        @default
+                        <option>Equipos</option>
+                        <option>Materias Primas</option>
+                        <option>Equipos y Materias Primas</option>
+                    @endswitch
                 </select>
                 @error('tipo_proveedor')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-            
-            
-            <div class="col-md-6">
+            <!--Descripcion del proveedor-->
+            <div class="col-md-10">
                 <label for="descripcion" class="form-label">descripcion</label>
                 <input type="text" name="descripcion" value="{{$proveedores->descripcion}}" class="form-control" >
                 @error('descripcion')
                     <small style="color: red;">{{$message}}</small>
                 @enderror
             </div>
-            
             <!--Boton Actualizar-->
-            <div class="col-2">
-                <label class="form-label" style="color: white;">........................</label>
-                <button type="submit" class="btn btn-primary">Actualizar</button>
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </div>
         </form>
     </div>

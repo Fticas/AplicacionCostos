@@ -22,13 +22,11 @@
             </div>
             <!--Lista de unidades de medida-->
             <div class="col-md-3">
-                <label for="inputPassword4" class="form-label">Unidad de medida base</label>
-                <select name="unidadmedida" class="form-select">
-                        
+                <label class="form-label">Unidad de medida base</label>
+                <select name="unidadmedida" class="form-select">        
                     @foreach($unidades_medida as $unidad_medida)
                     <option>{{$unidad_medida->nombre}}</option>
                     @endforeach
-
                 </select>
             </div>
             <!--Boton enviar-->

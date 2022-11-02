@@ -25,9 +25,9 @@
             <div class="col-5">
                 <label for="tipo_proveedor" class="form-label">Seleccionar tipo de proveedor: </label>
                 <select name="tipo_proveedor" id="cars" class="form-select">
-                    <option value="Proveedor de equipo">Equipos</option> 
-                    <option value="Proveedor de materia prima">Materia Prima</option>
-                    <option value="Proveedor de materia prima y equipo">Equipos y Materia Prima</option>
+                    <option>Equipos</option> 
+                    <option>Materias Primas</option>
+                    <option>Equipos y Materia Prima</option>
                 </select>
                 @error('tipo_proveedor')
                     <small style="color: red;">{{$message}}</small>
