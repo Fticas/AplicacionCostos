@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Proveedor;
-use App\Http\Requests\StoreProveedoresRequest;
+use App\Http\Requests\StoreOrdenCompraRequest;
+use App\Models\MateriaPrima;
+use App\Models\OrdenCompra;
+use App\Models\UnidadMedida;
 
-class ProveedorController extends Controller
+class OrdenesCompraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        $proveedores = Proveedor::All();
-        return view('proveedores.ver', compact("proveedores"));
+        //
     }
 
     /**
@@ -32,17 +33,18 @@ class ProveedorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreOrdenCompraRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProveedoresRequest $request)
+    public function store(StoreOrdenCompraRequest $request)
     {
-        $proveedores = new Proveedor;
-        $proveedores->nombre = $request->nombre;
-        $proveedores->descripcion = $request->descripcion;
-        $proveedores->tipo_proveedor = $request->tipo_proveedor;
-        $proveedores->save();
-        return redirect()->route('proveedores.index');
+        $ordencompra = new OrdenCompra();
+        $ordencompra->materia_prima_id = MateriaPrima::where('nombre', $request->materiaprima)->first()->id;
+        $ordencompra->cantidad = $request->cantidad;
+        $ordencompra->unidad_medida_id = UnidadMedida::where('nombre', $request->unidadmedida)->first()->id;
+        $ordencompra->costo_total = $request->costo_total;
+        $ordencompra->save();
+        return redirect()->route('compras.create');
     }
 
     /**
@@ -64,9 +66,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        $proveedores = Proveedor::find($id);
-        $proveedores = $proveedores->except(['tipo_proveedor' => 'Equipos']);
-        return view('proveedores.editar', compact("proveedores"));
+        //
     }
 
     /**
@@ -76,14 +76,9 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProveedoresRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $proveedor = Proveedor::find($id);
-        $proveedor->nombre = $request->nombre;
-        $proveedor->descripcion = $request->descripcion;
-        $proveedor->tipo_proveedor = $request->tipo_proveedor;
-        $proveedor->save();
-        return redirect()->route('proveedores.index');
+        //
     }
 
     /**
@@ -94,6 +89,8 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ordencompra = OrdenCompra::find($id);
+        $ordencompra->delete();
+        return redirect()->route('compras.create');
     }
 }

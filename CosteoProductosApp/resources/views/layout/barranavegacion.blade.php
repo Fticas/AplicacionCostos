@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/recetas">
+                        <a class="nav-link active" aria-current="page" href="{{route('recetas.index')}}">
                             <span class="navegacion">Receta</span>
                         </a>
                     </li>

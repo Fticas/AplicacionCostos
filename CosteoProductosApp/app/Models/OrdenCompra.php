@@ -10,4 +10,12 @@ class OrdenCompra extends Model
     use HasFactory;
 
     protected $table = 'ordenes_compra';
+
+    public function materia_prima(){
+        return $this->belongsTo(MateriaPrima::class);
+    }
+
+    public function unidad_medida(){
+        return $this->belongsTo(UnidadMedida::class);
+    }
 }

@@ -3,33 +3,44 @@
 @section('contenido')
 
 
-<section> <!--la etiqueta section se va a quitar porque esta incluida en la plantilla principal-->
-    <div style="padding: 20px;">
-        <!--Informacion general-->
-        <h3 class="titulos">Detalle de compra</h3>
-        <div>
-            <div class="container">
-                <div class="row" style="font-size: medium; padding:5px;">
-                    <div class="col-md-2">Fecha de compra:</div>
-                    <div class="col-md-3">--/--/---</div>
-                </div>
-                <div class="row" style="font-size: medium; padding:5px">
-                    <div class="col-md-2">Proveedor:</div>
-                    <div class="col-md-3">nombre</div>
-                </div>
-                <div class="row" style="font-size: medium; padding:5px">
-                    <div class="col-md-2">Codigo Proveedor:</div>
-                    <div class="col-md-3">codigo</div>
-                </div>
-                <div class="row" style="font-size: medium; padding:5px">
-                    <div class="col-md-2">No Factura:</div>
-                    <div class="col-md-3">--------</div>
-                </div>
-            </div>
+<div style="padding: 20px;">
+    <div style="padding-left: 5px;">
+        <div class="pull-right"style="background:transparent;">
+            <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('compras.index')}}" style="margin-top: 10px;margin-bottom: 10px;"> 
+                <i class="fa fa-arrow-left" aria-hidden="true"> Regresar</i>
+            </a>
         </div>
-        <!--Ordenes de compra-->
-        @include('layout.tablas.tablaordencompra')
     </div>
-</section>
+    <!--Encabezado-->
+    <figcaption>
+        <h5 style="text-align: center;">Informacion de compra</h5>
+    </figcaption>
+    <br>
+    <div class="row g-3 align-items-center">
+        <!--Nombre del proveedor-->
+        <div class="col-md-4">
+            <label class="form-label">Proveedor</label>
+            <input type="text" value="{{$compra->proveedor->nombre}}" class="form-control" readonly>
+        </div>
+        <!--Fecha de compra-->
+        <div class="col-md-3">
+            <label for="" class="form-label">Fecha de compra</label>
+            <input type="date" value="{{$compra->fecha_compra}}" class="form-control" readonly>
+        </div>
+        <!--No de factuta-->
+        <div class="col-md-3">
+            <label for="" class="form-label">No. de factura</label>
+            <input type="text" value="{{$compra->no_factura}}" class="form-control" id="" readonly>
+        </div>
+    </div>
+    <br>
+    <div style="border-style: outset;"></div>
+    <br>
+    <figcaption>
+        <h5 style="text-align: center;">Detalle de compra</h5>
+    </figcaption>
+    <br>
+    @include('ordenescompras.ver')
+</div>
 
 @endsection
