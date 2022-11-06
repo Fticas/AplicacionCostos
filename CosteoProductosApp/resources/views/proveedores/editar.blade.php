@@ -35,19 +35,28 @@
                         @case('Equipos')
                         <option>Materias Primas</option>
                         <option>Equipos y Materias Primas</option>
+                        <option>Servicios</option>
                         @break
                         @case('Materias Primas')
                         <option>Equipos</option>
                         <option>Equipos y Materias Primas</option>
+                        <option>Servicios</option>
                         @break
                         @case('Equipos y Materias Primas')
                         <option>Equipos</option>
                         <option>Materias Primas</option>
+                        <option>Servicios</option>
+                        @break
+                        @case('Servicios')
+                        <option>Equipos</option>
+                        <option>Materias Primas</option>
+                        <option>Equipos y Materias Primas</option>
                         @break
                         @default
                         <option>Equipos</option>
                         <option>Materias Primas</option>
                         <option>Equipos y Materias Primas</option>
+                        <option>Servicios</option>
                     @endswitch
                 </select>
                 @error('tipo_proveedor')

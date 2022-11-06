@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('operarios', function (Blueprint $table) {
+        Schema::create('depreciaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 30);
-            $table->string('apellido', 30);
-            $table->string('carnet', 10);
-            $table->decimal('precio_hora', 22, 10);
+            $table->foreignId('equipo_id')->constrained('equipos')->onUpdate('cascade');
+            $table->foreignId('costo_id')->nullable()->constrained('costos')->onUpdate('cascade');
+            $table->date('fecha_depreciacion');
+            $table->decimal('valor',22,10);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operarios');
+        Schema::dropIfExists('depreciaciones');
     }
 };

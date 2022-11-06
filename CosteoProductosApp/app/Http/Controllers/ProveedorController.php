@@ -65,7 +65,6 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedores = Proveedor::find($id);
-        $proveedores = $proveedores->except(['tipo_proveedor' => 'Equipos']);
         return view('proveedores.editar', compact("proveedores"));
     }
 
