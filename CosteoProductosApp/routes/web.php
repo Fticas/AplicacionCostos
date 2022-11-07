@@ -35,7 +35,7 @@ Route::resource('depreciaciones', DepreciacionController::class);
 Route::resource('gastosoperaciones', GastoOperacionesController::class);
 
 Route::resource('pedidos', PedidoController::class);
-Route::resource('ordenespedido', OrdenPedidoController::class);
+Route::resource('ordenesproducto', OrdenProductoController::class);
 
 
 Route::resource('costosoperativos', CostoOperativoController::class);

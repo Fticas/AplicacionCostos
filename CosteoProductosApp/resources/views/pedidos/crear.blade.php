@@ -30,7 +30,7 @@
         </div>
         <!--Fecha de entrega-->
         <div class="col-3">
-            <label for="" class="form-label">Descripcion de la receta</label>
+            <label for="" class="form-label">Fecha de entrega</label>
             <input type="date" name="fecha" value="{{old('fecha')}}" id="" class="form-control">
             @error('fecha')
                 <small style="color: red">{{$message}}</small>
@@ -44,8 +44,8 @@
         </div>
     </form>
     <div style="border-style: outset;"></div>
-    @include('ordenespedido.crear')
-    @include('ordenespedido.ver')
+    @include('ordenesproducto.crear')
+    @include('ordenesproducto.ver')
 </div>
 
 @endsection

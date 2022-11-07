@@ -6,6 +6,7 @@ use App\Models\Producto;
 use App\Models\OrdenProducto;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePedidoRequest;
+use App\Models\Pedido;
 
 class PedidoController extends Controller
 {
@@ -16,7 +17,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        return view('pedidos.ver');
+        $pedidos = Pedido::all();
+        return view('pedidos.ver', compact('pedidos'));
     }
 
     /**
@@ -32,8 +34,8 @@ class PedidoController extends Controller
             //el calculo se realizara obteniendo el costo de la materia prima y agregando un 20% de ganancia
             $producto->precio = 1;
         }
-        $ordenespedido = OrdenProducto::all();
-        return view('pedidos.crear', compact('productos', 'ordenespedido'));
+        $ordenesproducto = OrdenProducto::all()->whereNull('pedido_id');
+        return view('pedidos.crear', compact('productos', 'ordenesproducto'));
     }
 
     /**
@@ -44,7 +46,21 @@ class PedidoController extends Controller
      */
     public function store(StorePedidoRequest $request)
     {
-        return $request;
+        $pedido = new Pedido();
+        $pedido->nombre_cliente = $request->nombre;
+        $pedido->fecha_realizada = date('Y/m/d');
+        $pedido->fecha_entrega = $request->fecha;
+        $pedido->estado = 'realizado';
+        $pedido->imprevisto = 0;
+        $pedido->descuento = 0;
+        $pedido->save();
+        
+        $ordenesproducto = OrdenProducto::all()->whereNull('pedido_id');
+        foreach($ordenesproducto as $ordenproducto){
+            $ordenproducto->pedido_id = $pedido->id;
+            $ordenproducto->save();
+        }
+        return redirect()->route('pedidos.index');
     }
 
     /**
@@ -55,7 +71,9 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedido = Pedido::find($id);
+        $ordenesproducto = OrdenProducto::where('pedido_id', $id)->get();
+        return view('pedidos.mostrar', compact('pedido', 'ordenesproducto'));
     }
 
     /**

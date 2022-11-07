@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrdenProductoRequest;
+use App\Models\OrdenProducto;
+use App\Models\Producto;
 
-class OrdenPedidoController extends Controller
+class OrdenProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,12 +32,17 @@ class OrdenPedidoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\StoreOrdenProductoRequest $request
+     * @param  \App\Http\Requests\StoreOrdenProductoRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrdenProductoRequest $request)
     {
-        return "metodo store de OrndenPedidoController";
+        $ordenproducto = new OrdenProducto();
+        $ordenproducto->producto_id = Producto::where('nombre', $request->producto)->first()->id;
+        $ordenproducto->cantidad = $request->cantidad;
+        $ordenproducto->precio = $request->precio * $request->cantidad;
+        $ordenproducto->save();
+        return redirect()->route('pedidos.create');
     }
 
     /**
@@ -63,11 +70,11 @@ class OrdenPedidoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreOrdenProductoRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOrdenProductoRequest $request, $id)
     {
         //
     }
