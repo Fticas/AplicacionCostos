@@ -10,4 +10,8 @@ class OrdenProducto extends Model
     use HasFactory;
 
     protected $table = 'ordenes_producto';
+
+    public function producto(){
+        return $this->belongsTo(Producto::class);
+    }
 }

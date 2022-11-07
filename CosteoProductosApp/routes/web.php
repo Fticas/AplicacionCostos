@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrdenCompra;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,4 @@ Route::resource('ordenescompra', OrdenesCompraController::class);
 
 
 Route::resource('pedidos', PedidoController::class);
+Route::resource('ordenespedido', OrdenPedidoController::class);

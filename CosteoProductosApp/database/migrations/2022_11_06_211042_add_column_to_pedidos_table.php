@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ordenes_producto', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('pedido_id')->constrained()->onUpdate('cascade')->nullable(true);
-            $table->timestamps();
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->string('nombre_cliente', 25)->after('id');
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordenes_producto');
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropColumn('nombre_cliente');
+        });
     }
 };

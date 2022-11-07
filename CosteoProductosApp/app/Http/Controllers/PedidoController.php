@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
+use App\Models\OrdenProducto;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePedidoRequest;
 
 class PedidoController extends Controller
 {
@@ -23,18 +26,25 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $productos = Producto::all();
+        foreach ($productos as $producto){
+            //Aca se calculara el precio sugerido para cada producto
+            //el calculo se realizara obteniendo el costo de la materia prima y agregando un 20% de ganancia
+            $producto->precio = 1;
+        }
+        $ordenespedido = OrdenProducto::all();
+        return view('pedidos.crear', compact('productos', 'ordenespedido'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StorePedidoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePedidoRequest $request)
     {
-        //
+        return $request;
     }
 
     /**

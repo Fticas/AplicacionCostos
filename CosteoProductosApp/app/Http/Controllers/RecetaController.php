@@ -101,7 +101,7 @@ class RecetaController extends Controller
      */
     public function update(StoreRecetaRequest $request, $id)
     {
-        $receta = Receta::find($id)->first();
+        $receta = Receta::find($id);
         $receta->nombre = $request->nombre;
         $receta->descripcion = $request->descripcion;
         $receta->save();
