@@ -30,7 +30,12 @@ Route::resource('proveedores', ProveedorController::class);
 Route::resource('operarios', OperarioController::class);
 Route::resource('compras', CompraController::class);
 Route::resource('ordenescompra', OrdenesCompraController::class);
-
+Route::resource('equipos', EquipoController::class);
+Route::resource('depreciaciones', DepreciacionController::class);
+Route::resource('gastosoperaciones', GastoOperacionesController::class);
 
 Route::resource('pedidos', PedidoController::class);
 Route::resource('ordenespedido', OrdenPedidoController::class);
+
+
+Route::resource('costosoperativos', CostoOperativoController::class);

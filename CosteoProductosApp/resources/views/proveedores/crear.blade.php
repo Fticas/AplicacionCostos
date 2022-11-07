@@ -28,6 +28,7 @@
                     <option>Equipos</option> 
                     <option>Materias Primas</option>
                     <option>Equipos y Materia Prima</option>
+                    <option>Servicios</option>
                 </select>
                 @error('tipo_proveedor')
                     <small style="color: red;">{{$message}}</small>

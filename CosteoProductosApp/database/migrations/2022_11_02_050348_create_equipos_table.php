@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('operarios', function (Blueprint $table) {
+        Schema::create('equipos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('proveedor_id')->constrained('proveedores')->onUpdate('cascade');
+            $table->date('fecha_compra_equipo');
             $table->string('nombre', 30);
-            $table->string('apellido', 30);
-            $table->string('carnet', 10);
-            $table->decimal('precio_hora', 22, 10);
+            $table->string('descripcion', 250);
+            $table->decimal('costo',22, 10);
+            $table->decimal('vida_util',22,10);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operarios');
+        Schema::dropIfExists('equipos');
     }
 };

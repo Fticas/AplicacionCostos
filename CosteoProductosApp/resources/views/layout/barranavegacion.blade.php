@@ -21,9 +21,10 @@
                             <span class="navegacion">Costos</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Costos de Operacion</a></li>
-                            <li><a class="dropdown-item" href="#">Costos directos</a></li>
-                            <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>            
+                            <li><a class="dropdown-item" href="{{route('equipos.index')}}">Equipos</a></li>
+                            <li><a class="dropdown-item" href="{{route('depreciaciones.index')}}">Depreciaciones</a></li>
+                            <li><a class="dropdown-item" href="{{route('gastosoperaciones.index')}}">Costos de operacion</a></li>
+                            <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>   
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreOperarioRequest;
 use App\Models\Operario;
 
 class OperarioController extends Controller
@@ -34,7 +35,7 @@ class OperarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOperarioRequest $request)
     {
         $operarios = new Operario;
         $operarios->nombre = $request->nombre;
@@ -75,7 +76,7 @@ class OperarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOperarioRequest $request, $id)
     {
         $operario = Operario::find($id);
         $operario->nombre = $request->nombre;
