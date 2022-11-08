@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('producto_id')->after('pedido_id')->constrained()->onUpdate('cascade');
             $table->integer('cantidad')->after('producto_id');
             $table->decimal('precio', 22, 10)->after('cantidad');
+            $table->boolean('asignado')->after('precio');
         });
     }
 

@@ -18,13 +18,21 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="navegacion">Produccion</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>
+                            <li><a class="dropdown-item" href="{{route('asignaciones.index')}}">Asignacion</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="navegacion">Costos</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{route('equipos.index')}}">Equipos</a></li>
                             <li><a class="dropdown-item" href="{{route('depreciaciones.index')}}">Depreciaciones</a></li>
                             <li><a class="dropdown-item" href="{{route('gastosoperaciones.index')}}">Costos de operacion</a></li>
-                            <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>   
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asignacion;
 use App\Models\OrdenCompra;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +34,9 @@ Route::resource('ordenescompra', OrdenesCompraController::class);
 Route::resource('equipos', EquipoController::class);
 Route::resource('depreciaciones', DepreciacionController::class);
 Route::resource('gastosoperaciones', GastoOperacionesController::class);
-
 Route::resource('pedidos', PedidoController::class);
 Route::resource('ordenesproducto', OrdenProductoController::class);
+Route::resource('asignaciones', AsignacionController::class);
 
 
 Route::resource('costosoperativos', CostoOperativoController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrdenProductoRequest;
+use App\Models\OrdenCompra;
 use App\Models\OrdenProducto;
 use App\Models\Producto;
 
@@ -41,6 +42,7 @@ class OrdenProductoController extends Controller
         $ordenproducto->producto_id = Producto::where('nombre', $request->producto)->first()->id;
         $ordenproducto->cantidad = $request->cantidad;
         $ordenproducto->precio = $request->precio * $request->cantidad;
+        $ordenproducto->asignado = false;
         $ordenproducto->save();
         return redirect()->route('pedidos.create');
     }
@@ -87,6 +89,8 @@ class OrdenProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ordenproducto = OrdenProducto::find($id);
+        $ordenproducto->delete();
+        return redirect()->route('pedidos.create');
     }
 }
