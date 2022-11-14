@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asignacion;
 use App\Models\OrdenCompra;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,6 @@ Route::resource('pedidos', PedidoController::class);
 Route::resource('ordenesproducto', OrdenProductoController::class);
 Route::resource('asignaciones', AsignacionController::class);
 
+Route::resource('reportescompras',ReporteComprasController::class);
+Route::resource('reportesventas',ReporteVentasController::class);
 
-Route::resource('costosoperativos', CostoOperativoController::class);

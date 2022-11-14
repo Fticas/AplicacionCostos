@@ -18,4 +18,7 @@ class OrdenCompra extends Model
     public function unidad_medida(){
         return $this->belongsTo(UnidadMedida::class);
     }
+    public function compras(){
+        return $this->belongsTo(Compras::class);
+    }
 }

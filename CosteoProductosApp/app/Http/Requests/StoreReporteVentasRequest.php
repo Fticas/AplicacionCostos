@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProveedoresRequest extends FormRequest
+class StoreReporteVentasRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class StoreProveedoresRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'tipo_proveedor'=>'required'
+            'fecha_inicio'=>'required',
+            'fecha_final'=>'required'
         ];
     }
 
@@ -37,9 +36,8 @@ class StoreProveedoresRequest extends FormRequest
      */
     public function messages(){
         return [
-            'nombre.required' => '* El nombre es obligatorio',
-            'descripcion.required' => '* Ingrese una descripcion',
-            'tipo_proveedor.required' => '* Ingrese una descripcion'
+            'fecha_inicio.required' => 'Debe ingresar la fecha de inicio',
+            'fecha_final.required' => 'Debe ingresar la fecha final'
         ];
     }
 }

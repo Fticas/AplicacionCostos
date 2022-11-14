@@ -5,6 +5,22 @@
 <div style="padding: 20px;">
     @include('gastosoperaciones.crear')
     <br>
+    <form action="{{route('gastosoperaciones.show',1)}}" method="put" class="row g-3" style="padding: 25px;">
+        @csrf
+        <input type="hidden" name=_token value='{{csrf_token()}}'>
+        <!--Criterio de fecha-->
+        <div class="col-md-3">
+            <label for="inputPassword4" class="form-label">Fecha de visualizacion</label>
+            <input type="month" name="fecha" id="" class="form-control">
+            @error('fecha')
+                <small style="color: red;">{{$message}}</small>
+            @enderror
+        </div>
+        <!--Boton enviar-->
+        <div class="col-2">
+            <label class="form-label" style="color: white;">........................</label>
+            <button type="submit" class="btn btn-primary">Ver gastos operativos</button>
+        </div>
     <h3 style="text-align: center;">Tabla de costos operativos </h3>
     <hr>
     <div class="col-md-8 d-flex justify-content-between" style="margin: auto;">

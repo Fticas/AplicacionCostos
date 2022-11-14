@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-include("funciones.php");
+
 
 use Illuminate\Http\Request;
 use App\Models\UnidadMedida;
