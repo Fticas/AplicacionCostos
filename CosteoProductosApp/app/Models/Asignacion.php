@@ -10,4 +10,8 @@ class Asignacion extends Model
     use HasFactory;
 
     protected $table = 'asignaciones';
+
+    public function operario(){
+        return $this->belongsTo(Operario::class);
+    }
 }

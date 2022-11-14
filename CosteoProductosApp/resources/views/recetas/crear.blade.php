@@ -36,6 +36,14 @@
                 <small style="color: red">{{$message}}</small>
             @enderror
         </div>
+        <!--Cantidad de productos-->
+        <div class="col-md-2">
+            <label for="" class="form-label">Cantidad de productos</label>
+            <input type="text" name="cantidad" value="{{old('cantidad')}}" class="form-control" id="">
+            @error('cantidad')
+                <small style="color: red">{{$message}}</small>
+            @enderror
+        </div>
         <br>
         <!--Boton crear receta-->
         <div class="col-md-4">

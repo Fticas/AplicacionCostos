@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('recetas', function (Blueprint $table) {
             $table->string('nombre', 50)->after('id');
             $table->boolean('asignado')->after('descripcion');
+            $table->integer('cantidad_producto')->after('asignado');
         });
     }
 

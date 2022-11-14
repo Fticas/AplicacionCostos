@@ -40,7 +40,8 @@ class AsignacionController extends Controller
      */
     public function create()
     {
-        return "Madelline";
+        $asignaciones = [];
+        return view('asignaciones.detalle', compact('asignaciones'));
     }
 
     /**
@@ -53,11 +54,12 @@ class AsignacionController extends Controller
     {
         $asignacion = new Asignacion();
         $asignacion->operario_id = $request->operario;
+        $asignacion->producto_id = $request->producto;
         $asignacion->horas_trabajadas = $request->horas;
         $asignacion->fecha_asignacion = $request->fecha . '-01';
-        //$asignacion->anio = substr($request->fecha, 0, 4);
+        $asignacion->estado = false;
         $asignacion->save();
-        return redirect()->route('asignaciones.show', $request->id);
+        return redirect()->route('asignaciones.show', $request->producto);
     }
 
     /**
@@ -70,15 +72,15 @@ class AsignacionController extends Controller
     {
         $producto = Producto::find($id);
         $ordenesproducto = OrdenProducto::where('asignado', false)->get();
+        $ordenesproducto = $ordenesproducto->where('producto_id', $id);
         $producto->cantidad = 0;
         foreach ($ordenesproducto as $ordenproducto) {
-            if($producto->id == $ordenproducto->producto_id){
-                $producto->cantidad += $ordenproducto->cantidad;
-                $pedidos[] = Pedido::find($ordenproducto->pedido_id);
-            }
+            $producto->cantidad += $ordenproducto->cantidad;
         }
         $operarios = Operario::all();
-        return view('asignaciones.crear', compact('producto', 'pedidos', 'operarios'));
+        $asignaciones = Asignacion::where('producto_id', $id)->get();
+        $asignaciones = $asignaciones->where('estado', false);
+        return view('asignaciones.crear', compact('producto', 'operarios', 'asignaciones'));
     }
 
     /**
@@ -101,7 +103,39 @@ class AsignacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "metodo update de AsignacionController";
+        //Cambiando el estado a las asignaciones de empleados guardadas
+        $asignaciones = Asignacion::where('estado', false)->get();
+        $asignaciones = $asignaciones->where('producto_id', $id);
+        foreach($asignaciones as $asignacion){
+            $asignacion->estado = true;
+            $asignacion->save();
+        }
+
+        //Cambiando el estado a las ordenes de productos asignadas
+        $ordenesproducto = OrdenProducto::where('asignado', false)->get();
+        $ordenesproducto = $ordenesproducto->where('producto_id', $id);
+        foreach($ordenesproducto as $ordenproducto){
+            $ordenproducto->asignado = true;
+            $ordenproducto->save();
+        }
+
+        //Actualizando el estado de los pedidos
+        $pedidos = Pedido::all();
+        foreach($pedidos as $pedido){
+            $ordenes_productos = $pedido->ordenes_producto;
+            $completado = true;     //las ordenes de producto han sido asignadas
+            foreach($ordenes_productos as $orden_producto){
+                if(!$orden_producto->asignado){
+                    $completado = false;
+                    break;
+                }   
+            }
+            if($completado){
+                $pedido->estado = 'En proceso';
+                $pedido->save();
+            }
+        }
+        return redirect()->route('asignaciones.index');
     }
 
     /**

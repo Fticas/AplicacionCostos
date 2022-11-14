@@ -50,6 +50,7 @@ class RecetaController extends Controller
         $receta->nombre = $request->nombre;
         $receta->descripcion = $request->descripcion;
         $receta->asignado = false;
+        $receta->cantidad_producto = $request->cantidad;
         $receta->save();
 
         //Obtener los registros de la tabla receta_materias_primas que no tengan una receta asignada

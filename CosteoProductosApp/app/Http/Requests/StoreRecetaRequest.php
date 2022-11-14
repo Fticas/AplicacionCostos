@@ -25,7 +25,8 @@ class StoreRecetaRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'descripcion' => 'required'
+            'descripcion' => 'required',
+            'cantidad' => 'required'
         ];
     }
 
@@ -37,7 +38,8 @@ class StoreRecetaRequest extends FormRequest
     public function messages(){
         return [
             'nombre.required' => '* El nombre es requerido',
-            'descripcion.required' => '* La descripcion es requerida'
+            'descripcion.required' => '* La descripcion es requerida',
+            'cantidad.required' => '* La cantidad es requerida'
         ];
     }
 }

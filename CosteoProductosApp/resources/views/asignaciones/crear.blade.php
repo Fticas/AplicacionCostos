@@ -3,7 +3,7 @@
 @section('contenido')
 
 <div style="padding: 20px;">
-<div style="padding-left: 25px;">
+    <div style="padding-left: 25px;">
         <div class="pull-right"style="background:transparent;">
             <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('asignaciones.index')}}"
                 style="margin-top: 10px;margin-bottom: 10px;"> 
@@ -11,6 +11,8 @@
             </a>
         </div>
     </div>
+
+    <!--Formulario para actualizar las asignacion-->
     <figcaption>
         <h5 style="text-align: center;">Datos de asignacion</h5>
     </figcaption>
@@ -34,7 +36,9 @@
     </form>
     <br>
     <div style="border-style: outset;"></div>
-    <!--Formulario de nueva asignacion-->
+
+
+    <!--Formulario para agregar operarios-->
     <form action="{{route('asignaciones.store')}}" method="post" style="padding: 25px;" class="row g-3">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -68,14 +72,17 @@
                 <small style="color: red">{{$message}}</small>
             @enderror
         </div>
+        <div class="col-md-3" hidden>
+            <input type="text" name="producto" value="{{$producto->id}}" class="form-control" hidden>
+        </div>
         <br>
         <!--Boton guardar-->
         <div class="col-md-3">
             <label for="" class="form-label" style="color: white;">--------------------------------</label>
-            <input type="text" name="id" value="{{$producto->id}}" class="form-control" hidden>
             <input type="submit" value="Asignar Operario" class="btn btn-primary">
         </div>
     </form>
+    @include('asignaciones.mostrar')
 </div>
 
 @endsection

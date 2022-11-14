@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('asignaciones', function (Blueprint $table) {
             $table->id();
             $table->foreignId('operario_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('orden_producto_id')->constrained('ordenes_producto')->onUpdate('cascade')->nullable(true);
+            $table->foreignId('producto_id')->onUpdate('cascade')->nullable(true);
             $table->foreignId('costo_id')->constrained()->onUpdate('cascade')->nullable(true);
             $table->integer('horas_trabajadas');
             $table->date('fecha_asignacion');

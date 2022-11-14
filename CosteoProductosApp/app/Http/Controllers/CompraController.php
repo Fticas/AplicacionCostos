@@ -63,15 +63,12 @@ class CompraController extends Controller
             $ordencompra->save();
             
             //Calcula el factor de conversion que se aplicara a la actualizacion de materia prima
-            $factor = 1.00;
+            $factor = 1.0;
             $um_comprada = UnidadMedida::find($ordencompra->unidad_medida->id)->first();
             $um_base = UnidadMedida::find($ordencompra->materia_prima->unidadMedida->id)->first();
-            if($um_comprada->id != $um_base->id){
-                $lista = Conversion::where('unidad_medida_inicial_id', $um_comprada->id)->get();
-                $conversion = $lista->where('unidad_medida_final_id', $um_base->id);
-                $factor = $conversion[0]->factor_conversion;
-                $lista = null;
-                $conversion = null;
+            $conversion = Conversion::encontrar($um_comprada, $um_base);
+            if($conversion != null){
+                $factor = $conversion->factor_conversion;
             }
 
             //Actualiza las unidades en existencia y el precio a la materia prima
