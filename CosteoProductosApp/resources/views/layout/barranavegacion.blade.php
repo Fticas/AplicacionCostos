@@ -40,8 +40,8 @@
                             <span class="navegacion">Reportes</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Reporte 1</a></li>
-                            <li><a class="dropdown-item" href="#">Reporte 2</a></li>
+                            <li><a class="dropdown-item" href="{{route('reportescompras.index')}}">Reporte 1</a></li>
+                            <li><a class="dropdown-item" href="{{route('reportesventas.index')}}">Reporte 2</a></li>
                             <li><a class="dropdown-item" href="#">Reporte 3</a></li>
                         </ul>
                     </li>

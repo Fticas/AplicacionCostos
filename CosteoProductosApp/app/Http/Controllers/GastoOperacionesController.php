@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GastoOperaciones;
 use App\Models\Proveedor;
 use App\Http\Requests\StoreGastoOperacionesRequest;
-use App\Http\Requests\UpdateGastoOperacionesRequest;
+use App\Http\Requests\StoreDepreciacionRequest;
 
 class GastoOperacionesController extends Controller
 {
@@ -16,10 +16,13 @@ class GastoOperacionesController extends Controller
      */
     public function index()
     {
-        $proveedores = Proveedor::All();
-        $gastos = GastoOperaciones::All()->sortBy('fecha');
+        
+
+        $proveedores = [];
+        $gastos = [];
         return view('gastosoperaciones.ver', compact("gastos",'proveedores'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,9 +60,12 @@ class GastoOperacionesController extends Controller
      * @param  \App\Models\GastoOperaciones  $gastoOperaciones
      * @return \Illuminate\Http\Response
      */
-    public function show(GastoOperaciones $gastoOperaciones)
+    public function show(StoreDepreciacionRequest $request)
     {
-        //
+        $proveedores = Proveedor::All();
+        $gastos = GastoOperaciones::All()->sortBy('fecha_depreciacion');
+        $gastos = $gastos->where('fecha', $request->fecha . '-01');
+        return view('gastosoperaciones.ver', compact("gastos",'proveedores'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-include("funciones.php");
+
 
 use App\Models\MateriaPrima;
 use App\Models\UnidadMedida;
