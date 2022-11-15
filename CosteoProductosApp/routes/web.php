@@ -38,7 +38,6 @@ Route::resource('gastosoperaciones', GastoOperacionesController::class);
 Route::resource('pedidos', PedidoController::class);
 Route::resource('ordenesproducto', OrdenProductoController::class);
 Route::resource('asignaciones', AsignacionController::class);
-
 Route::resource('reportescompras',ReporteComprasController::class);
 Route::resource('reportesventas',ReporteVentasController::class);
-
+Route::resource('finalizaciones', FinalizacionController::class);

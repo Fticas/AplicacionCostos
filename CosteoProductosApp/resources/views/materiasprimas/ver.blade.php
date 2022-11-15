@@ -17,9 +17,8 @@
             <tr style="text-align: center;">
                 <th>Acciones</th>
                 <th>Nombre</th>
-                <th>Unidades en existencia</th>
                 <th>Unidad de medida</th>
-                <th>Costo total</th>
+                <th>Costo unitario</th>
             </tr>
         </thead>
         <tbody style="text-align: center;">
@@ -33,9 +32,12 @@
                     </a>
                 </td>
                 <td>{{$materia_prima->nombre}}</td>
-                <td>{{$materia_prima->cantidad_existencia}}</td>
                 <td>{{$materia_prima->unidadMedida->nombre}}</td>
-                <td>$ {{number_format($materia_prima->costo_total, 2)}}</td>
+                @if($materia_prima->cantidad_existencia == 0)
+                <td>$ {{number_format(0, 2)}}</td>
+                @else
+                <td>$ {{number_format($materia_prima->costo_total / $materia_prima->cantidad_existencia, 2)}}</td>
+                @endif
             </tr>
             @endforeach
         </tbody>

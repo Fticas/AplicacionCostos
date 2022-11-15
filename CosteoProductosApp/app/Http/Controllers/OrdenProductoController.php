@@ -42,7 +42,7 @@ class OrdenProductoController extends Controller
         $ordenproducto->producto_id = Producto::where('nombre', $request->producto)->first()->id;
         $ordenproducto->cantidad = $request->cantidad;
         $ordenproducto->precio = $request->precio * $request->cantidad;
-        $ordenproducto->asignado = false;
+        $ordenproducto->asignado = "Ingresado";
         $ordenproducto->save();
         return redirect()->route('pedidos.create');
     }

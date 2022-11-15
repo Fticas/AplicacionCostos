@@ -53,10 +53,10 @@ class PedidoController extends Controller
 
                 //Costo de materia prima utilizada en la receta
                 $producto->precio += $costo_unitario * $cantidad_materia_prima_receta;
-                $producto->precio *= 1.20;
             }
             //costo por unidad
             $producto->precio /= $producto->receta->cantidad_producto;
+            $producto->precio *= 1.20;
         }
         $ordenesproducto = OrdenProducto::all()->whereNull('pedido_id');
         return view('pedidos.crear', compact('productos', 'ordenesproducto'));
@@ -74,7 +74,7 @@ class PedidoController extends Controller
         $pedido->nombre_cliente = $request->nombre;
         $pedido->fecha_realizada = date('Y/m/d');
         $pedido->fecha_entrega = $request->fecha;
-        $pedido->estado = 'realizado';
+        $pedido->estado = 'Ingresado';
         $pedido->imprevisto = 0;
         $pedido->descuento = 0;
         $pedido->save();

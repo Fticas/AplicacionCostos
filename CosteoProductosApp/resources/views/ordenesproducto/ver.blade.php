@@ -20,9 +20,9 @@
         @foreach($ordenesproducto as $ordenproducto)
         <tr>
             <td>
-                @if($ordenproducto->asignado)
+                @if($ordenproducto->asignado != 'Ingresado')
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger btn-sm shadow-none" title="Eliminar del pedido" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-danger btn-sm shadow-none" title="No action" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa fa-trash fa-fw text-white"></i>
                 </button>
                 <!-- Modal -->

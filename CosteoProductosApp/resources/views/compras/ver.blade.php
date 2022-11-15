@@ -25,7 +25,7 @@
                 <div class="accordion-body">
                     <strong>No de factura: {{$compra->no_factura}}</strong><br>
                     Proveedor de la compra: {{$compra->proveedor->nombre}} <br>
-                    Total de compra: $ aaa <br><br>
+                    Total de compra: $ {{$compra->total_compra()}} <br><br>
                     <a href="{{route('compras.show', $compra->id)}}">
                         <button type="button" class="btn btn-secondary">Ver detalle de compra</button>
                     </a>

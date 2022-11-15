@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('costo_id')->constrained()->onUpdate('cascade')->nullable(true);
             $table->integer('horas_trabajadas');
             $table->date('fecha_asignacion');
+            $table->string('estado', 25);
             $table->timestamps();
         });
     }

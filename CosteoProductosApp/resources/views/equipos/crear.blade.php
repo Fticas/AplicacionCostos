@@ -26,7 +26,7 @@
                 <label class="form-label">Proveedor</label>
                 <select name="proveedor" id="" class="form-select">
                     @foreach($proveedores as $proveedor)
-                        @if($proveedor->tipo_proveedor == 'Equipos'||$proveedor->tipo_proveedor == 'Equipos y Materias Primas')
+                        @if($proveedor->tipo_proveedor == 'Equipos'|| $proveedor->tipo_proveedor == 'Equipos y Materia Prima')
                         <option>{{$proveedor->nombre}}</option>
                         @endif
                     @endforeach

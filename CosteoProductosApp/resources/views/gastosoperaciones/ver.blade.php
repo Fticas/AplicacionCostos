@@ -17,10 +17,12 @@
             @enderror
         </div>
         <!--Boton enviar-->
-        <div class="col-2">
+        <div class="col-3">
             <label class="form-label" style="color: white;">........................</label>
             <button type="submit" class="btn btn-primary">Ver gastos operativos</button>
         </div>
+    </form>
+    <br>
     <h3 style="text-align: center;">Tabla de costos operativos </h3>
     <hr>
     <div class="col-md-8 d-flex justify-content-between" style="margin: auto;">

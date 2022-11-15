@@ -16,9 +16,7 @@ class GastoOperacionesController extends Controller
      */
     public function index()
     {
-        
-
-        $proveedores = [];
+        $proveedores = Proveedor::where('tipo_proveedor', 'Servicios')->get();
         $gastos = [];
         return view('gastosoperaciones.ver', compact("gastos",'proveedores'));
     }
@@ -50,7 +48,6 @@ class GastoOperacionesController extends Controller
         $gasto->costo_id = NULL;
         $gasto->monto =$request->monto;
         $gasto->save();
-
         return redirect()->route('gastosoperaciones.index'); 
     }
 
@@ -62,7 +59,7 @@ class GastoOperacionesController extends Controller
      */
     public function show(StoreDepreciacionRequest $request)
     {
-        $proveedores = Proveedor::All();
+        $proveedores = Proveedor::where('tipo_proveedor', 'Servicios')->get();
         $gastos = GastoOperaciones::All()->sortBy('fecha_depreciacion');
         $gastos = $gastos->where('fecha', $request->fecha . '-01');
         return view('gastosoperaciones.ver', compact("gastos",'proveedores'));

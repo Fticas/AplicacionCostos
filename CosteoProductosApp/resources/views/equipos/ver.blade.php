@@ -32,13 +32,11 @@
             <tr>
                 <td>
                     <a href="{{route('equipos.edit', $equipo->id)}}" class="btn btn-success btn-sm shadow-none"
-                        data-toggle="tooltip" data-placement="top"
-                        title="Editar informacion: {{$equipo->nombre}}">
+                        data-toggle="tooltip" data-placement="top" title="Editar informacion: {{$equipo->nombre}}" style="display: inline-block;">
                         <i class="fa fa-book fa-fw text-white"></i>
                     </a>
                     <a href="{{route('equipos.edit', $equipo->id)}}" class="btn btn-danger btn-sm shadow-none"
-                        data-toggle="tooltip" data-placement="top"
-                        title="Eliminar registro: {{$equipo->nombre}}">
+                        data-toggle="tooltip" data-placement="top" title="Eliminar registro: {{$equipo->nombre}}" style="display: inline-block;">
                         <i class="fa fa-trash fa-fw text-white"></i>
                     </a>
                 </td>

@@ -23,6 +23,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{route('operarios.index')}}">Operarios</a></li>
                             <li><a class="dropdown-item" href="{{route('asignaciones.index')}}">Asignacion</a></li>
+                            <li><a class="dropdown-item" href="{{route('finalizaciones.index')}}">Finalizacion de asignaciones</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -40,9 +41,8 @@
                             <span class="navegacion">Reportes</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{route('reportescompras.index')}}">Reporte 1</a></li>
-                            <li><a class="dropdown-item" href="{{route('reportesventas.index')}}">Reporte 2</a></li>
-                            <li><a class="dropdown-item" href="#">Reporte 3</a></li>
+                            <li><a class="dropdown-item" href="{{route('reportescompras.index')}}">Reporte de compras</a></li>
+                            <li><a class="dropdown-item" href="{{route('reportesventas.index')}}">Reporte de ventas</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -50,7 +50,6 @@
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item" style="display: inline-flex;">
-                        <a class="nav-link active" aria-current="page" href="#">Cerrar Sesion</a>
                         <img src="/images/perfil.png" alt="" width="40px">
                     </li>
                 </ul>

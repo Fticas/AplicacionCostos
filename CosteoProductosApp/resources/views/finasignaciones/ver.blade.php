@@ -5,16 +5,8 @@
 @php $indice = 1 @endphp
 
 <div style="padding: 20px;">
-    <!--<div style="padding-left: 25px;">
-        <div class="pull-right"style="background:transparent;">
-            <a class="btn btn-primary" data-placement="top" title="Regresar" href="{{route('asignaciones.create')}}"
-                style="margin-top: 10px;margin-bottom: 10px;"> 
-                <i class="fa fa-pencil" aria-hidden="true"> Detalle de Asignaciones</i>
-            </a>
-        </div>
-    </div>-->
     <figcaption>
-        <h5 style="text-align: center;">Lista de productos pendientes de hornear</h5>
+        <h5 style="text-align: center;">Lista de productos en proceso</h5>
     </figcaption>
     <br><br>
     <table class="table">
@@ -24,7 +16,7 @@
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Descripcion</th>
-                <th scope="col">Asignar</th>
+                <th scope="col">Finalizar Asignacion</th>
             </tr>
         </thead>
         <tbody>
@@ -36,11 +28,18 @@
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->descripcion}}</td>
                 <td>
-                    <a href="{{route('asignaciones.show', $producto->id)}}">
-                        <button type="submit" class="btn btn-primary btn-sm shadow-none" title="Asignar pedidos">
+                    <a href="{{route('finalizaciones.show', $producto->id)}}" style="display: inline-block;">
+                        <button type="submit" class="btn btn-primary btn-sm shadow-none" title="ver detalles">
                             <i class="fa fa-book fa-fw text-white"></i>
                         </button>
                     </a>
+                    <form action="{{route('finalizaciones.update', $producto->id)}}" method="post" style="display: inline-block;">
+                        @csrf
+                        @method('put')
+                        <button type="submit" class="btn btn-primary btn-sm shadow-none" title="Finalizar">
+                            <i class="fa fa-pencil fa-fw text-white"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @php $indice += 1 @endphp

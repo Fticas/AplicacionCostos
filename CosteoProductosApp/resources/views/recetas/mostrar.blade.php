@@ -19,12 +19,20 @@
         <figcaption>
             <h5 style="text-align: center;">{{$receta->nombre}}</h5>
         </figcaption>
+        <!--Nombre de la receta-->
+        <div class="col-md-10">
+            <label for="" class="form-label">Nombre de la receta</label>
+            <input type="text" name="nombre" value="{{$receta->nombre}}" class="form-control" readonly>
+        </div>
+        <br>
         <!--Descripcion de la receta-->
         <div class="col-12">
             <textarea name="descripcion" class="form-control" rows="5" readonly>{{$receta->descripcion}}</textarea>
-            @error('descripcion')
-                <small style="color: red">{{$message}}</small>
-            @enderror
+        </div>
+        <!--Cantidad de productos-->
+        <div class="col-md-2">
+            <label for="" class="form-label">Cantidad de productos</label>
+            <input type="text" name="cantidad" value="{{$receta->cantidad_producto}}" class="form-control" readonly>
         </div>
         <br>
     </form>

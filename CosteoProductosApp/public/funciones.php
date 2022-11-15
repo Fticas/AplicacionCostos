@@ -1,10 +1,6 @@
 <?php
     use App\Models\UnidadMedida;
-    use App\Models\Magnitud;
     use App\Models\Conversion;
-    use App\Models\MateriaPrima;
-    use App\Models\Producto;
-    use App\Models\Proveedor;
 
     /**
      * Crea instancias de la entidad conversion
